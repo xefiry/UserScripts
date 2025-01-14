@@ -4,6 +4,7 @@ A list of various UserScripts
 
 ## List of scripts
 
+- [Clean page title](https://raw.githubusercontent.com/xefiry/UserScripts/master/clean_page_title.user.js)
 - [Fextralife - Clean search links](https://raw.githubusercontent.com/xefiry/UserScripts/master/fextralife__clean_search_links.user.js)
 - [Fextralife - Fullscreen Elden Ring map](https://raw.githubusercontent.com/xefiry/UserScripts/master/fextralife__fullscreen_elden_ring_map.user.js)
 - [Hianime - Always dub](https://raw.githubusercontent.com/xefiry/UserScripts/master/hianime__always_dub.user.js)
