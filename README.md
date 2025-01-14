@@ -1,6 +1,13 @@
 # UserScripts
 
-A list of various UserScripts
+A list of various UserScripts to improve some websites.
+
+## Installation
+
+1. Install [Violentmonkey](https://violentmonkey.github.io/get-it/) add-on.
+2. Install a script from the [List of scripts](#list-of-scripts) by clicking on it.
+
+You can also use [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey](https://addons.mozilla.org/firefox/addon/greasemonkey/), but the scripts are only tested for Violentmonkey, so use them at your own discretion.
 
 ## List of scripts
 

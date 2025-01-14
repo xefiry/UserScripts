@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Clean page title
 // @version     1.0
-// @description Removes unnecessary text in page title
+// @description Removes unnecessary text in page title.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
