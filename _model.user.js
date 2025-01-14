@@ -15,3 +15,6 @@
 // ==/UserScript==
 
 console.log("Running");
+
+// Violentmonkey API : https://violentmonkey.github.io/api/gm/
+// Tampermonkey documentation : https://www.tampermonkey.net/documentation.php (not used, but kept just in case)
