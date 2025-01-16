@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Reddit - Enhancer
-// @version     1.0
+// @version     1.0.1
 // @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, always use best quality image, all gif are videos, no nsfw blur/click)
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -154,7 +154,7 @@ function get_buttons() {
 }
 
 document.addEventListener('keydown', function (event) {
-  if (event.key === "ArrowArrowLeft") {
+  if (event.key === "ArrowLeft") {
     b = get_buttons()
     if (b != null) {
       b[0].click()
