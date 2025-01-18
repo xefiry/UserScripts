@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          4chan - Enhancer
-// @version       1.1
-// @description   Various enhancements for 4chan : Quick acces to "Set filters", dates displayed with local format, video progress bar on hover ("Image hover" needs to be activated in 4chan settings), colored digits
+// @version       1.2
+// @description   Various enhancements for 4chan : Quick acces to "Set filters", dates displayed with local format, video progress bar on hover ("Image hover" needs to be activated in 4chan settings), colored digits, clean linkified URLs
 // @author        xefiry
 // @namespace     https://github.com/xefiry
 // @homepageURL   https://github.com/xefiry/UserScripts
@@ -179,6 +179,27 @@ function set_number_colors() {
   }
 }
 
+function clean_links() {
+  var prefix = "https://sys.4chan.org/derefer?url="
+  var links = document.querySelectorAll(".linkified:not(.processed)")
+  var url
+
+  i=0
+
+  for (let i = 0; i < links.length; i++) {
+    url = links[i].href
+    
+    // if the url starts with the prefix
+    if (url.indexOf(prefix) === 0) {
+      url = url.replace(prefix, "")
+      url = decodeURIComponent(url)
+      
+      links[i].href = url
+    }
+    
+    links[i].classList.add("processed")
+  }
+}
 
 function main() {
   set_style()
@@ -186,6 +207,7 @@ function main() {
   setInterval(format_dates, 1000)
   setInterval(refresh_video_playbar, 100)
   setInterval(set_number_colors, 500)
+  setInterval(clean_links, 500)
 }
 
 //setTimeout(main, 250); // .25s delay
