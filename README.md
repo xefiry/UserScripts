@@ -11,6 +11,7 @@ You can also use [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey]
 
 ## List of scripts
 
+- [4chan - Enhancer](https://raw.githubusercontent.com/xefiry/UserScripts/master/4chan__enhancer.user.js)
 - [Clean page title](https://raw.githubusercontent.com/xefiry/UserScripts/master/clean_page_title.user.js)
 - [Fextralife - Clean search links](https://raw.githubusercontent.com/xefiry/UserScripts/master/fextralife__clean_search_links.user.js)
 - [Fextralife - Fullscreen Elden Ring map](https://raw.githubusercontent.com/xefiry/UserScripts/master/fextralife__fullscreen_elden_ring_map.user.js)
