@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          4chan - Enhancer
-// @version       1.0
+// @version       1.1
 // @description   Various enhancements for 4chan : Quick acces to "Set filters", dates displayed with local format, video progress bar on hover ("Image hover" needs to be activated in 4chan settings), colored digits
 // @author        xefiry
 // @namespace     https://github.com/xefiry
@@ -93,7 +93,7 @@ function format_dates() {
   }
 }
 
-function video_listener() {
+function video_timeupdate() {
   // if the video is loaded and duration is known
   if (!isNaN(this.duration)) {
     progress = this.currentTime / this.duration * 100
@@ -102,9 +102,15 @@ function video_listener() {
   }
 }
 
+function video_pause() {
+  console.log("pause")
+  document.getElementById("my_progress_background").style.visibility = "hidden"
+  document.getElementById("my_progress_bar").style.width = "0%"
+}
+
 function refresh_video_playbar() {
-  vid = document.querySelector("video#image-hover")
-  bar = document.getElementById("my_progress_background")
+  var vid = document.querySelector("video#image-hover")
+  var bar = document.getElementById("my_progress_background")
 
   // if there is a video
   if (vid !== null) {
@@ -112,7 +118,7 @@ function refresh_video_playbar() {
     bar.style.visibility = "visible"
 
     // adjust width to video
-    x = vid.getBoundingClientRect()
+    var x = vid.getBoundingClientRect()
     bar.style.width = x.width + "px"
     bar.style.top = Math.min(x.height, window.innerHeight-4) + "px"
 
@@ -120,15 +126,11 @@ function refresh_video_playbar() {
     if (!vid.classList.contains("has_listener")) {
       //vid.setAttribute("controls", "controls")
 
-      vid.addEventListener("timeupdate", video_listener);
+      vid.addEventListener("timeupdate", video_timeupdate);
+      vid.addEventListener("pause", video_pause);
 
       vid.classList.add("has_listener")
     }
-  }
-  else {
-    // if there is no video, hide the progress bar
-    bar.style.visibility = "hidden"
-    document.getElementById("my_progress_bar").style.width = "10%"
   }
 }
 
