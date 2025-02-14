@@ -57,7 +57,7 @@ function set_style() {
   // create progress bar
   var progress_background = document.createElement("div")
   progress_background.id = "my_progress_background"
-  progress_background.style.visibility = "hidden"
+  progress_background.hidden = true
   progress_background.appendChild(progress_bar)
 
   // add it to the page
@@ -85,7 +85,6 @@ function format_dates() {
   var timestamp
 
   for (let i = 0; i < date_nodes.length; i++) {
-    //console.log(date_nodes[i])
     timestamp = date_nodes[i].getAttribute("data-utc")
     date_nodes[i].innerText = new Date(timestamp * 1000).toLocaleString()
 
@@ -103,8 +102,7 @@ function video_timeupdate() {
 }
 
 function video_pause() {
-  console.log("pause")
-  document.getElementById("my_progress_background").style.visibility = "hidden"
+  document.getElementById("my_progress_background").hidden = true
   document.getElementById("my_progress_bar").style.width = "0%"
 }
 
@@ -115,7 +113,7 @@ function refresh_video_playbar() {
   // if there is a video
   if (vid !== null) {
     // show the progress
-    bar.style.visibility = "visible"
+    bar.hidden = false
 
     // adjust width to video
     var x = vid.getBoundingClientRect()
@@ -188,15 +186,15 @@ function clean_links() {
 
   for (let i = 0; i < links.length; i++) {
     url = links[i].href
-    
+
     // if the url starts with the prefix
     if (url.indexOf(prefix) === 0) {
       url = url.replace(prefix, "")
       url = decodeURIComponent(url)
-      
+
       links[i].href = url
     }
-    
+
     links[i].classList.add("processed")
   }
 }
