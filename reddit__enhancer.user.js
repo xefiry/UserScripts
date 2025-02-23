@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Reddit - Enhancer
-// @version     1.0.1
+// @version     1.0.2
 // @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, always use best quality image, all gif are videos, no nsfw blur/click)
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -17,10 +17,10 @@
 // Increase width limit on subredits homepages & posts
 function increase_display_width() {
   elem = document.querySelector(".subgrid-container")
+  new_width = "80%"
 
-  if (elem != null && elem.style.width !== '100%') {
-    document.querySelector(".subgrid-container").style.width = "80%"
-    document.querySelector(".main").style.maxWidth = "85%"
+  if (elem != null && elem.style.width !== new_width) {
+    elem.style.width = new_width
   }
 }
 
