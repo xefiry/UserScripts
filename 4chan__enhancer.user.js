@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          4chan - Enhancer
-// @version       1.3
+// @version       1.4
 // @description   Various enhancements for 4chan : Quick acces to "Set filters", dates displayed with local format, video progress bar on hover ("Image hover" needs to be activated in 4chan settings), colored digits, clean linkified URLs
 // @author        xefiry
 // @namespace     https://github.com/xefiry
@@ -101,14 +101,10 @@ function video_timeupdate() {
   }
 }
 
-function video_pause() {
-  document.getElementById("my_progress_background").hidden = true
-  document.getElementById("my_progress_bar").style.width = "0%"
-}
-
 function refresh_video_playbar() {
   var vid = document.querySelector("video#image-hover")
   var bar = document.getElementById("my_progress_background")
+  var prog = document.getElementById("my_progress_bar")
 
   // if there is a video
   if (vid !== null) {
@@ -122,13 +118,16 @@ function refresh_video_playbar() {
 
     // add listenner (if not present)
     if (!vid.classList.contains("has_listener")) {
-      //vid.setAttribute("controls", "controls")
-
       vid.addEventListener("timeupdate", video_timeupdate);
-      vid.addEventListener("pause", video_pause);
 
       vid.classList.add("has_listener")
     }
+  }
+  // if there is no vid, and the bar is visible
+  else if (vid === null && !bar.hidden) {
+    // hide it
+    bar.hidden = true
+    prog.style.width = "0%"
   }
 }
 
