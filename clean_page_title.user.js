@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Clean page title
-// @version     1.0
+// @version     1.0.1
 // @description Removes unnecessary text in page title.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -24,18 +24,18 @@
 
 let rules = [
 // Site to apply rule               What to search for                                        What to replace it with
-  ["github.com",                    /GitHub - ([^:]+): .*/g,                                  "$1"],
-  ["hianime.to",                    /Watch (.*) English Sub\/Dub online Free on HiAnime.to/g, "$1"],
-  ["myanimelist.net/anime",         " - MyAnimeList.net",                                     ""],
-  ["nexusmods.com",                 / at [A-Za-z0-9 ']+ Nexus - [Mm]ods and [Cc]ommunity/g,   ""],
-  ["senscritique.com",              " - SensCritique",                                        ""],
-  ["spirit-of-metal.com",           " - discography, line-up, biography, interviews, photos", ""],
-  ["store.steampowered.com",        " on Steam",                                              ""],
-  ["store.steampowered.com",        /^Save [0-9]+% on /g,                                     ""],
+  ["github.com",                    /^(GitHub - )?([A-Za-z0-9._-]+\/[A-Za-z0-9._-]+)(: .*)?$/, "$2"],
+  ["hianime.to",                    /Watch (.*) English Sub\/Dub online Free on HiAnime.to/g,  "$1"],
+  ["myanimelist.net/anime",         " - MyAnimeList.net",                                      ""],
+  ["nexusmods.com",                 / at [A-Za-z0-9 ']+ Nexus - [Mm]ods and [Cc]ommunity/g,    ""],
+  ["senscritique.com",              " - SensCritique",                                         ""],
+  ["spirit-of-metal.com",           " - discography, line-up, biography, interviews, photos",  ""],
+  ["store.steampowered.com",        " on Steam",                                               ""],
+  ["store.steampowered.com",        /^Save [0-9]+% on /g,                                      ""],
   // wiki pages
-  ["wikipedia.org/wiki",            / [—-] Wikip[eé]dia/g,                                    ""],
-  ["wiki.archlinux.org/title",      " - ArchWiki",                                            ""],
-  ["eldenring.wiki.fextralife.com", " | Elden Ring Wiki",                                     ""]
+  ["wikipedia.org/wiki",            / [—-] Wikip[eé]dia/g,                                     ""],
+  ["wiki.archlinux.org/title",      " - ArchWiki",                                             ""],
+  ["eldenring.wiki.fextralife.com", " | Elden Ring Wiki",                                      ""]
 ]
 
 function do_rename() {
