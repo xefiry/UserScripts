@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Jira - Utility buttons
-// @version     1.0.1
+// @version     1.1
 // @description Adds buttons for various things to copy from a ticket.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -14,6 +14,24 @@
 // @match       https://*.atlassian.net/browse/*
 // ==/UserScript==
 
+// CSS style for the buttons
+var styles = `
+.my_buttons {
+  border-width: 0px;
+  border-radius: 3px;
+  font-size: inherit;
+  color: var(--ds-text, #42526E) !important;
+  cursor: pointer;
+  padding: 0px 5px;
+  margin-left: 10px;
+}
+`
+
+var styleSheet = document.createElement("style")
+styleSheet.innerText = styles
+document.head.appendChild(styleSheet)
+
+
 function get_ticket() {
   return document.URL.replace(location.protocol + '//' + location.host + "/browse/", "")
 }
@@ -25,6 +43,7 @@ function get_name() {
     return tmp.innerText
   }
   else {
+    console.error("Error from get_name()")
     return "ERROR"
   }
 }
@@ -36,6 +55,7 @@ function get_creator() {
     return tmp.innerText
   }
   else {
+    console.error("Error from get_creator()")
     return "ERROR"
   }
 }
@@ -47,13 +67,12 @@ function get_url_2() {
     return tmp.href
   }
   else {
+    console.error("Error from get_url_2()")
     return "ERROR"
   }
 }
 
-function copy_hyperlink() {
-  console.log("copy_hyperlink called")
-
+function copy_hyperlink_1() {
   link = document.URL
   title = get_ticket()
   content = "<a href='" + link + "'>" + title + "</a>"
@@ -62,8 +81,6 @@ function copy_hyperlink() {
 }
 
 function copy_hyperlink_2() {
-  console.log("copy_hyperlink called")
-
   // get link from the "Afficher la demande sur le portail" link
   link = get_url_2()
   title = get_ticket()
@@ -73,32 +90,24 @@ function copy_hyperlink_2() {
 }
 
 function copy_text() {
-  console.log("copy_text called")
-
   content = get_ticket()
 
   GM_setClipboard(content, "text/plain")
 }
 
 function copy_fulltext() {
-  console.log("copy_fulltext called")
-
   content = get_ticket() + " " + get_name()
 
   GM_setClipboard(content, "text/plain")
 }
 
 function copy_tsv() {
-  console.log("copy_tsv called")
-
   content = get_ticket() + "\t" + get_name() + "\t" + get_creator()
 
   GM_setClipboard(content, "text/plain")
 }
 
 function copy_markdown() {
-  console.log("copy_markdown called")
-
   link = document.URL
   title = get_ticket()
   content = "[" + title + "](" + link + ")"
@@ -106,10 +115,9 @@ function copy_markdown() {
   GM_setClipboard(content, "text/plain")
 }
 
-function create_button(id, text, click_function) {
+function create_button(text, click_function) {
   result = document.createElement("button")
 
-  result.id = "id"
   result.classList.add("my_buttons")
   result.innerText = text
   result.addEventListener("click", click_function)
@@ -118,8 +126,6 @@ function create_button(id, text, click_function) {
 }
 
 function init() {
-  console.log("Jira better link copy working")
-
   // Get the new location for buttons
   x = document.querySelector("ol._1e0c1txw")
   if (x === null) {
@@ -127,35 +133,15 @@ function init() {
     return
   }
 
-  if (document.getElementsByClassName("my_buttons").length != 0) {
-    console.log("Buttons already here, nothing to do")
-    return
+  // If no buttons found, create and add them
+  if (document.getElementsByClassName("my_buttons").length == 0) {
+    x.appendChild(create_button("URL 1", copy_hyperlink_1))
+    x.appendChild(create_button("URL 2", copy_hyperlink_2))
+    x.appendChild(create_button("MD",    copy_markdown))
+    x.appendChild(create_button("TXT",   copy_text))
+    x.appendChild(create_button("FULL",  copy_fulltext))
+    x.appendChild(create_button("TSV",   copy_tsv))
   }
-
-  // CSS style for the buttons
-  var styles = `
-  .my_buttons {
-    border-width: 0px;
-    border-radius: 3px;
-    font-size: inherit;
-    color: var(--ds-text, #42526E) !important;
-    cursor: pointer;
-    padding: 0px 5px;
-    margin-left: 10px;
-  }
-  `
-
-  var styleSheet = document.createElement("style")
-  styleSheet.innerText = styles
-  document.head.appendChild(styleSheet)
-
-  // Create the buttons
-  x.appendChild(create_button("id_copy_hyperlink",   "URL",   copy_hyperlink))
-  x.appendChild(create_button("id_copy_hyperlink_2", "URL 2", copy_hyperlink_2))
-  x.appendChild(create_button("id_copy_markdown",    "MD",    copy_markdown))
-  x.appendChild(create_button("id_copy_text",        "TXT",   copy_text))
-  x.appendChild(create_button("id_copy_fulltext",    "FULL",  copy_fulltext))
-  x.appendChild(create_button("id_copy_tsv",         "TSV",   copy_tsv))
 }
 
-setTimeout(init, 1000);
+setInterval(init, 500);
