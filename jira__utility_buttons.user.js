@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Jira - Utility buttons
-// @version     1.1
+// @version     1.1.1
 // @description Adds buttons for various things to copy from a ticket.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -61,7 +61,7 @@ function get_creator() {
 }
 
 function get_url_2() {
-  tmp = document.querySelector("a._11c8qk37")
+  tmp = document.querySelector("a._11c8dcr7")
 
   if (tmp !== null) {
     return tmp.href
