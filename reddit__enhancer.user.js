@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Reddit - Enhancer
-// @version     1.0.4
-// @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, always use best quality image, all gif are videos, no nsfw blur/click)
+// @version     1.1
+// @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, always use best quality image, all gif are videos, no nsfw blur/click/blocking)
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
@@ -133,6 +133,17 @@ function no_nsfw_click() {
   }
 }
 
+function no_nsfw_blocking() {
+  x = document.querySelector("#nsfw-desktop-auth-blocking-modal-dialog")
+  if (x !== null) {
+    x.remove()
+  }
+  x = document.querySelector("#nsfw-desktop-auth-blocking-modal")
+  if (x !== null) {
+    x.remove()
+  }
+}
+
 function get_buttons() {
   z = null
 
@@ -175,6 +186,7 @@ function main() {
 
   no_nsfw_blur()
   no_nsfw_click()
+  no_nsfw_blocking()
 }
 
 setTimeout(main, 500);
