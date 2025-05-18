@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Reddit - Enhancer
-// @version     1.2.1
+// @version     1.2.2
 // @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, always use best quality image, all gif are videos, no nsfw blur/click/blocking)
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -73,7 +73,7 @@ function get_buttons() {
   if (tmp == null) {
     return null
   }
-  return tmp.shadowRoot.querySelector("faceplate-carousel button.button-small")
+  return tmp.shadowRoot.querySelectorAll("faceplate-carousel button.button-small")
 }
 
 document.addEventListener('keydown', function (event) {
