@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Reddit - Enhancer
-// @version     1.1
+// @version     1.2
 // @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, always use best quality image, all gif are videos, no nsfw blur/click/blocking)
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -24,97 +24,34 @@ function increase_display_width() {
   }
 }
 
-// Always show the best quality images
-function always_use_best_image() {
-  images = document.querySelectorAll("img.media-lightbox-img")
-
-  for (let i = 0; i < images.length; i++) {
-
-    // get srcset from the image and split it in an array
-    srcset = images[i].srcset.split(", ")
-
-    // only continue if srcset has multiple entries
-    if (srcset.length > 1) {
-
-      // get the last srcset
-      new_srcset = srcset[srcset.length - 1]
-
-      // split it and get the first part (the URL)
-      new_href = new_srcset.split(" ")[0]
-
-      // apply new srcset and new href
-      images[i].srcset = new_srcset
-      images[i].href = new_href
-    }
-  }
-}
-
-// removes "gif" attribute from some videos to prevent problems
-// (video playback restarts alone, click on media opens new tab)
-function all_gifs_are_videos() {
-  vid_list = document.querySelectorAll("shreddit-player-2")
-
-  for (i = 0; i < vid_list.length; i++) {
-    vid = vid_list[i]
-
-    if (vid.hasAttribute("gif")) {
-      // remove reddit video controls
-      vid.shadowRoot.querySelector("shreddit-media-ui").remove()
-      // add default video controls
-      vid.shadowRoot.querySelector("video").setAttribute("controls", "controls")
-      // enable loop
-      vid.shadowRoot.querySelector("video").setAttribute("loop", "")
-      // remove gif attribute
-      vid.removeAttribute('gif')
-    }
-  }
-}
-
 // remove nsfw blur on new reddit
 function no_nsfw_blur() {
-  // for posts
-  old_node = document.querySelector("xpromo-nsfw-blocking-container")
-
-  if (old_node !== null) {
-    console.log("NSFW blur found and removed")
-    new_node = document.createElement("shreddit-async-loader")
-    new_node.innerHTML = old_node.innerHTML
-    old_node.replaceWith(new_node)
-  }
-
-  // for miniatures on the side
-  // get sidebar
+  // for miniatures on the sidebar
   sidebar = document.querySelector("pdp-right-rail")
 
   if (sidebar !== null) {
-    imgs = sidebar.querySelectorAll("img")
-
     // remove blur from images
-    for (var i = 0; i < imgs.length; i++) {
-      if (imgs[i].style.filter.includes("blur")) {
-        imgs[i].style.filter = ""
+    sidebar.querySelectorAll("img").forEach(img => {
+      if (img.style.filter.includes("blur")) {
+        img.style.filter = ""
       }
-    }
+    })
 
     // remove (-18) svgs
-    svgs = sidebar.querySelectorAll("svg")
-
-    for (var i = 0; i < svgs.length; i++) {
-      if (svgs[i].classList.contains("h-[24px]")) {
-        svgs[i].remove()
+    sidebar.querySelectorAll("svg").forEach(svg => {
+      if (svg.classList.contains("h-[24px]")) {
+        svg.remove()
       }
-    }
+    })
   }
 
   // for miniatures in search result
   if (document.URL.search("/search/") >= 0) {
-    imgs = document.querySelectorAll("faceplate-img")
-
-    for (var i = 0; i < imgs.length; i++) {
-      if (imgs[i].classList.contains("thumbnail-blur")) {
-        imgs[i].classList.remove("thumbnail-blur")
+    document.querySelectorAll("faceplate-img").forEach(img => {
+      if (img.classList.contains("thumbnail-blur")) {
+        img.classList.remove("thumbnail-blur")
       }
-    }
+    })
   }
 }
 
@@ -133,35 +70,12 @@ function no_nsfw_click() {
   }
 }
 
-function no_nsfw_blocking() {
-  x = document.querySelector("#nsfw-desktop-auth-blocking-modal-dialog")
-  if (x !== null) {
-    x.remove()
-  }
-  x = document.querySelector("#nsfw-desktop-auth-blocking-modal")
-  if (x !== null) {
-    x.remove()
-  }
-}
-
 function get_buttons() {
-  z = null
-
-  w = document.querySelector("div#shreddit-media-lightbox")
-  if (w == null) {
+  tmp = document.querySelector("div#shreddit-media-lightbox gallery-carousel")
+  if (tmp == null) {
     return null
   }
-  x = w.querySelector("gallery-carousel")
-  if (x == null) {
-    return null
-  }
-  y = x.shadowRoot.querySelector("faceplate-carousel")
-  if (y == null) {
-    return null
-  }
-  z = y.querySelectorAll("button.button-small")
-
-  return z
+  return tmp.shadowRoot.querySelector("faceplate-carousel button.button-small")
 }
 
 document.addEventListener('keydown', function (event) {
@@ -181,12 +95,9 @@ document.addEventListener('keydown', function (event) {
 
 function main() {
   increase_display_width()
-  always_use_best_image()
-  all_gifs_are_videos()
 
   no_nsfw_blur()
   no_nsfw_click()
-  no_nsfw_blocking()
 }
 
 setTimeout(main, 500);
