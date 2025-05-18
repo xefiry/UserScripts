@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Clean page title
-// @version     1.0.2
+// @version     1.0.3
 // @description Removes unnecessary text in page title.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -39,10 +39,10 @@ let rules = [
 ]
 
 function do_rename() {
-  for (let i = 0; i < filtered_rules.length; i++) {
-    console.debug(filtered_rules[i][0] + " applied")
-    document.title = document.title.replace(filtered_rules[i][1], filtered_rules[i][2]);
-  }
+  filtered_rules.forEach(rule => {
+    console.debug(rule[0] + " applied")
+    document.title = document.title.replace(rule[1], rule[2]);
+  })
 }
 
 let url = document.URL

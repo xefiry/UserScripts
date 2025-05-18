@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          4chan - Enhancer
-// @version       1.4
+// @version       1.5
 // @description   Various enhancements for 4chan : Quick acces to "Set filters", dates displayed with local format, video progress bar on hover ("Image hover" needs to be activated in 4chan settings), colored digits, clean linkified URLs
 // @author        xefiry
 // @namespace     https://github.com/xefiry
@@ -81,15 +81,12 @@ function set_nav_list() {
 }
 
 function format_dates() {
-  var date_nodes = document.querySelectorAll(".dateTime:not(.postNum):not(.formattedDate)")
-  var timestamp
+  document.querySelectorAll(".dateTime:not(.postNum):not(.formattedDate)").forEach(node => {
+    timestamp = node.getAttribute("data-utc")
+    node.innerText = new Date(timestamp * 1000).toLocaleString()
 
-  for (let i = 0; i < date_nodes.length; i++) {
-    timestamp = date_nodes[i].getAttribute("data-utc")
-    date_nodes[i].innerText = new Date(timestamp * 1000).toLocaleString()
-
-    date_nodes[i].classList.add("formattedDate")
-  }
+    node.classList.add("formattedDate")
+  })
 }
 
 function video_timeupdate() {
@@ -158,44 +155,35 @@ function parse_number(num) {
 
 function set_number_colors() {
   // post number
-  numbers = document.querySelectorAll(".postNum.desktop:not(.processed)")
-
-  for (let i = 0; i < numbers.length; i++) {
-    number = numbers[i].children[1].innerText
-    numbers[i].children[1].innerHTML = parse_number(number)
-    numbers[i].classList.add("processed")
-  }
+  document.querySelectorAll(".postNum.desktop:not(.processed)").forEach(node => {
+    number = node.children[1].innerText
+    node.children[1].innerHTML = parse_number(number)
+    node.classList.add("processed")
+  })
 
   // quote links
-  numbers = document.querySelectorAll(".quotelink:not(.processed)")
-
-  for (let i = 0; i < numbers.length; i++) {
-    number = numbers[i].innerText
-    numbers[i].innerHTML = parse_number(number)
-    numbers[i].classList.add("processed")
-  }
+  document.querySelectorAll(".quotelink:not(.processed)").forEach(node => {
+    number = node.innerText
+    node.innerHTML = parse_number(number)
+    node.classList.add("processed")
+  })
 }
 
 function clean_links() {
   var prefix = "https://sys.4chan.org/derefer?url="
-  var links = document.querySelectorAll(".linkified:not(.processed)")
-  var url
 
-  i=0
-
-  for (let i = 0; i < links.length; i++) {
-    url = links[i].href
+  document.querySelectorAll(".linkified:not(.processed)").forEach(link => {
 
     // if the url starts with the prefix
-    if (url.indexOf(prefix) === 0) {
-      url = url.replace(prefix, "")
+    if (link.href.indexOf(prefix) === 0) {
+      url = link.href.replace(prefix, "")
       url = decodeURIComponent(url)
 
-      links[i].href = url
+      link.href = url
     }
 
-    links[i].classList.add("processed")
-  }
+    link.classList.add("processed")
+  })
 }
 
 function main() {

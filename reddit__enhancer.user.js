@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Reddit - Enhancer
-// @version     1.2
+// @version     1.2.1
 // @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, always use best quality image, all gif are videos, no nsfw blur/click/blocking)
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -57,17 +57,15 @@ function no_nsfw_blur() {
 
 function no_nsfw_click() {
   // Click on "View nsfw content"
-  imgs = document.querySelectorAll("shreddit-blurred-container")
-
-  for (var i = 0; i < imgs.length; i++) {
+  document.querySelectorAll("shreddit-blurred-container").forEach(img => {
     // Get the overlay inside the container
-    overlay = imgs[i].shadowRoot.querySelector(".overlay")
+    overlay = img.shadowRoot.querySelector(".overlay")
 
     // If nsfw blur and overlay exists, we click it (not the container)
-    if (imgs[i].getAttribute("reason") === "nsfw" && overlay !== null) {
+    if (img.getAttribute("reason") === "nsfw" && overlay !== null) {
       overlay.click()
     }
-  }
+  })
 }
 
 function get_buttons() {
