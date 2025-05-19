@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Reddit - Enhancer
-// @version     1.2.2
+// @version     1.3
 // @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, always use best quality image, all gif are videos, no nsfw blur/click/blocking)
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -21,6 +21,27 @@ function increase_display_width() {
   elem = document.querySelector(".subgrid-container")
   if (elem != null && elem.style.width !== new_width) {
     elem.style.width = new_width
+  }
+}
+
+// removes "gif" attribute from some videos to prevent problems
+// (video playback restarts alone, click on media opens new tab)
+function all_gifs_are_videos() {
+  vid_list = document.querySelectorAll("shreddit-player-2")
+
+  for (i = 0; i < vid_list.length; i++) {
+    vid = vid_list[i]
+
+    if (vid.hasAttribute("gif")) {
+      // remove reddit video controls
+      vid.shadowRoot.querySelector("shreddit-media-ui").remove()
+      // add default video controls
+      vid.shadowRoot.querySelector("video").setAttribute("controls", "controls")
+      // enable loop
+      vid.shadowRoot.querySelector("video").setAttribute("loop", "")
+      // remove gif attribute
+      vid.removeAttribute('gif')
+    }
   }
 }
 
@@ -93,6 +114,7 @@ document.addEventListener('keydown', function (event) {
 
 function main() {
   increase_display_width()
+  all_gifs_are_videos()
 
   no_nsfw_blur()
   no_nsfw_click()
