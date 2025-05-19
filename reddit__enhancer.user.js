@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Reddit - Enhancer
-// @version     1.3
-// @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, always use best quality image, all gif are videos, no nsfw blur/click/blocking)
+// @version     1.4
+// @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, always use best quality video, all gif are videos, no nsfw blur/click)
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
@@ -21,6 +21,14 @@ function increase_display_width() {
   elem = document.querySelector(".subgrid-container")
   if (elem != null && elem.style.width !== new_width) {
     elem.style.width = new_width
+  }
+}
+
+function set_video_quality() {
+  key = "@reddit/shreddit-player-media-quality"
+  if (localStorage[key] !== "1080") {
+    localStorage[key] = "1080"
+    location.reload()
   }
 }
 
@@ -114,6 +122,7 @@ document.addEventListener('keydown', function (event) {
 
 function main() {
   increase_display_width()
+  set_video_quality()
   all_gifs_are_videos()
 
   no_nsfw_blur()
