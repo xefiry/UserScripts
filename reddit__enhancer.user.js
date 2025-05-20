@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Reddit - Enhancer
-// @version     1.4
+// @version     1.5
 // @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, always use best quality video, all gif are videos, no nsfw blur/click)
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -97,26 +97,37 @@ function no_nsfw_click() {
   })
 }
 
-function get_buttons() {
-  tmp = document.querySelector("div#shreddit-media-lightbox gallery-carousel")
-  if (tmp == null) {
-    return null
+var buttons = null
+
+function set_buttons(event) {
+  buttons = event.currentTarget.shadowRoot.querySelectorAll("faceplate-carousel button.button-small")
+}
+
+function add_carousel_listner() {
+  // get all carousels
+  carousels = document.querySelectorAll("gallery-carousel")
+
+  // if there is only one, get it's buttons
+  if (carousels.length === 1) {
+    buttons = carousels[0].shadowRoot.querySelectorAll("faceplate-carousel button.button-small")
   }
-  return tmp.shadowRoot.querySelectorAll("faceplate-carousel button.button-small")
+  // else, add event listner to update buttons on hover
+  else {
+    document.querySelectorAll("gallery-carousel:not(.hasEventListner)").forEach(node => {
+      node.onmouseover = set_buttons
+      node.classList.add("hasEventListner")
+    })
+  }
 }
 
 document.addEventListener('keydown', function (event) {
-  if (event.key === "ArrowLeft") {
-    b = get_buttons()
-    if (b != null) {
-      b[0].click()
-    }
+  if (buttons === null) {
+    return
   }
-  else if (event.key === "ArrowRight") {
-    b = get_buttons()
-    if (b != null) {
-      b[1].click()
-    }
+  
+  switch(event.key) {
+    case "ArrowLeft":  buttons[0].click(); break;
+    case "ArrowRight": buttons[1].click(); break;
   }
 })
 
@@ -124,6 +135,7 @@ function main() {
   increase_display_width()
   set_video_quality()
   all_gifs_are_videos()
+  add_carousel_listner()
 
   no_nsfw_blur()
   no_nsfw_click()
