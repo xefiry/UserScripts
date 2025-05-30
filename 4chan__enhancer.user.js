@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          4chan - Enhancer
-// @version       1.5
+// @version       1.6
 // @description   Various enhancements for 4chan : Quick acces to "Set filters", dates displayed with local format, video progress bar on hover ("Image hover" needs to be activated in 4chan settings), colored digits, clean linkified URLs
 // @author        xefiry
 // @namespace     https://github.com/xefiry
@@ -27,43 +27,6 @@ var colors = [
   "#9043FD"  // 8
 ];
 
-var styles = `
-#my_progress_background {
-  position: fixed;
-  height: 4px;
-  background-color: rgba(100, 100, 100, .5);
-  right: 0px;
-  z-index: 9999;
-}
-
-#my_progress_bar {
-  width: 50%;
-  height: 4px;
-  background-color: rgb(255, 0, 0, .75);
-  transition: all .25s linear;
-}
-`;
-
-function set_style() {
-  // create new style
-  var styleSheet = document.createElement("style")
-  styleSheet.innerText = styles
-  document.head.appendChild(styleSheet)
-
-  // create progress bar content
-  var progress_bar = document.createElement("div")
-  progress_bar.id = "my_progress_bar"
-
-  // create progress bar
-  var progress_background = document.createElement("div")
-  progress_background.id = "my_progress_background"
-  progress_background.hidden = true
-  progress_background.appendChild(progress_bar)
-
-  // add it to the page
-  document.body.appendChild(progress_background)
-}
-
 function set_nav_list() {
   // Get top left navigation list
   var nav = document.getElementById("navtopright")
@@ -89,42 +52,51 @@ function format_dates() {
   })
 }
 
+function init_progress_bar() {
+  var progress = document.createElement("progress")
+  progress.hidden = true
+  progress.max = 100
+  progress.value = 0
+  progress.style.zIndex = 9999
+  progress.style.position = "fixed"
+  progress.style.top = "0px"
+  progress.style.right = "2px"
+  progress.style.width = "120px"
+  document.body.appendChild(progress)
+}
+
 function video_timeupdate() {
   // if the video is loaded and duration is known
   if (!isNaN(this.duration)) {
-    progress = this.currentTime / this.duration * 100
-
-    document.getElementById("my_progress_bar").style.width = `${progress}%`
+    var progress = document.querySelector("progress")
+    progress.value = this.currentTime / this.duration * 100
   }
 }
 
 function refresh_video_playbar() {
-  var vid = document.querySelector("video#image-hover")
-  var bar = document.getElementById("my_progress_background")
-  var prog = document.getElementById("my_progress_bar")
-
+  var video = document.querySelector("video#image-hover")
+  var progress = document.querySelector("progress")
+  
   // if there is a video
-  if (vid !== null) {
+  if (video !== null) {
     // show the progress
-    bar.hidden = false
+    progress.hidden = false
 
     // adjust width to video
-    var x = vid.getBoundingClientRect()
-    bar.style.width = x.width + "px"
-    bar.style.top = Math.min(x.height, window.innerHeight-4) + "px"
-
+    var x = video.getBoundingClientRect()
+    progress.style.width = (x.width - 4) + "px"
+    progress.style.top = Math.min(x.height-4, window.innerHeight-12) + "px"
+    
     // add listenner (if not present)
-    if (!vid.classList.contains("has_listener")) {
-      vid.addEventListener("timeupdate", video_timeupdate);
-
-      vid.classList.add("has_listener")
+    if (!video.classList.contains("has_listener")) {
+      video.addEventListener("timeupdate", video_timeupdate);
+      video.classList.add("has_listener")
     }
   }
-  // if there is no vid, and the bar is visible
-  else if (vid === null && !bar.hidden) {
-    // hide it
-    bar.hidden = true
-    prog.style.width = "0%"
+  // if there is no video, and the progress is visible, hide the bar
+  else if (video === null && !progress.hidden) {
+    progress.hidden = true
+    progress.value = 0
   }
 }
 
