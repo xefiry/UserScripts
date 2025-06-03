@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Jira - Utility buttons
-// @version     1.1.1
+// @version     1.1.2
 // @description Adds buttons for various things to copy from a ticket.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -127,7 +127,7 @@ function create_button(text, click_function) {
 
 function init() {
   // Get the new location for buttons
-  x = document.querySelector("ol._1e0c1txw")
+  x = document.querySelector("nav > ol")
   if (x === null) {
     console.error("Jira better link copy can't work, ol.css-m6vsls not found")
     return
