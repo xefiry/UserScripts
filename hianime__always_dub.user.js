@@ -1,17 +1,17 @@
 // ==UserScript==
 // @name        Hianime - Always dub
-// @version     1.0.2
+// @version     1.0.3
 // @description Set Hianime to always play dubbed anime.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
 // @supportURL  https://github.com/xefiry/UserScripts/issues
 // @downloadURL https://raw.githubusercontent.com/xefiry/UserScripts/master/hianime__always_dub.user.js
-// @icon        https://hianimez.to/favicon.ico
+// @icon        https://hianime.to/favicon.ico
 // @noframes
 // @run-at      document-end
 // @grant       none
-// @match       https://hianimez.to/*
+// @match       https://hianime.to/*
 // ==/UserScript==
 
 source = localStorage["currentSource"]
