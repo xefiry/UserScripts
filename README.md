@@ -15,6 +15,7 @@ You can also use [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey]
 - [4chan - Enhancer](https://raw.githubusercontent.com/xefiry/UserScripts/master/4chan__enhancer.user.js)
 - [Fextralife - Clean search links](https://raw.githubusercontent.com/xefiry/UserScripts/master/fextralife__clean_search_links.user.js)
 - [Fextralife - Fullscreen Elden Ring map](https://raw.githubusercontent.com/xefiry/UserScripts/master/fextralife__fullscreen_elden_ring_map.user.js)
+- [GitHub - Load comments](https://raw.githubusercontent.com/xefiry/UserScripts/master/github__load_comments.user.js)
 - [Hianime - Always dub](https://raw.githubusercontent.com/xefiry/UserScripts/master/hianime__always_dub.user.js)
 - [Jira - Auto refresh dashboards](https://raw.githubusercontent.com/xefiry/UserScripts/master/jira__auto_refresh_dashboards.user.js)
 - [Jira - Shorter column name](https://raw.githubusercontent.com/xefiry/UserScripts/master/jira__shorter_column_name.user.js)
