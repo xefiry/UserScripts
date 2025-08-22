@@ -22,4 +22,4 @@ function remove_hilight() {
   })
 }
 
-setInterval(remove_hilight, 1000);
+setInterval(remove_hilight, 100);
