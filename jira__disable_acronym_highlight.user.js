@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Jira - Disable acronym highlight
-// @version     1.0
+// @version     1.0.1
 // @description Disable hilight that proposes AI definition for acronyms
 // @author      xefiry
 // @namespace   https://github.com/xefiry
