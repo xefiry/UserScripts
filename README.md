@@ -18,6 +18,7 @@ You can also use [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey]
 - [GitHub - Load comments](https://raw.githubusercontent.com/xefiry/UserScripts/master/github__load_comments.user.js)
 - [Hianime - Always dub](https://raw.githubusercontent.com/xefiry/UserScripts/master/hianime__always_dub.user.js)
 - [Jira - Auto refresh dashboards](https://raw.githubusercontent.com/xefiry/UserScripts/master/jira__auto_refresh_dashboards.user.js)
+- [Jira - Disable acronym highlight](https://raw.githubusercontent.com/xefiry/UserScripts/master/jira__disable_acronym_highlight.user.js)
 - [Jira - Shorter column name](https://raw.githubusercontent.com/xefiry/UserScripts/master/jira__shorter_column_name.user.js)
 - [Jira - Utility buttons](https://raw.githubusercontent.com/xefiry/UserScripts/master/jira__utility_buttons.user.js)
 - [Lucca - Autologin](https://raw.githubusercontent.com/xefiry/UserScripts/master/lucca__autologin.user.js)
