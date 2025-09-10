@@ -1,12 +1,12 @@
 // ==UserScript==
-// @name        Twitch - Mute ads
-// @version     1.0
-// @description Mute video during ads. Unmute mini player on top of chat if available.
+// @name        Twitch - Mute and blur ads
+// @version     1.1
+// @description Mute video and blur ads. Unmute mini player on top of chat if available.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
 // @supportURL  https://github.com/xefiry/UserScripts/issues
-// @downloadURL https://raw.githubusercontent.com/xefiry/UserScripts/master/twitch__mute_ads.user.js
+// @downloadURL https://raw.githubusercontent.com/xefiry/UserScripts/master/twitch__mute_and_blur_ads.user.js
 // @icon        https://assets.twitch.tv/assets/favicon-32-e29e246c157142c94346.png
 // @noframes
 // @run-at      document-end
@@ -47,6 +47,13 @@ function toggle_volume(mute_ad) {
   
   // Set mute status for the main video player
   videos[0].muted = mute_ad
+
+  // If we mute, blur the image too
+  if (mute_ad) {
+    videos[0].style.filter = "blur(250px)"
+  } else { // else, unblur
+    videos[0].style.filter = ""
+  }
   
   return true
 }

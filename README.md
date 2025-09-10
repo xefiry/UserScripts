@@ -25,5 +25,5 @@ You can also use [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey]
 - [NexusMods - Auto slow download](https://raw.githubusercontent.com/xefiry/UserScripts/master/nexusmods__auto_slow_download.user.js)
 - [Reddit - Enhancer](https://raw.githubusercontent.com/xefiry/UserScripts/master/reddit__enhancer.user.js)
 - [Steam - No age check](https://raw.githubusercontent.com/xefiry/UserScripts/master/steam__no_age_check.user.js)
-- [Twitch - Mute ads](https://raw.githubusercontent.com/xefiry/UserScripts/master/twitch__mute_ads.user.js)
+- [Twitch - Mute and blur ads](https://raw.githubusercontent.com/xefiry/UserScripts/master/twitch__mute_and_blur_ads.user.js)
 - [Yahoo - Spam counter](https://raw.githubusercontent.com/xefiry/UserScripts/master/yahoo__spam_counter.user.js)
