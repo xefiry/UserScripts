@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Twitch - Mute and blur ads
-// @version     1.1.1
+// @version     2.0.0
 // @description Mute video and blur ads. Unmute mini player on top of chat if available.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -14,81 +14,58 @@
 // @match       https://www.twitch.tv/*
 // ==/UserScript==
 
-let interval_id = null
-let interval_time = 500
+const Status = {
+  IN_STREAM: 0,
+  IN_AD: 1
+};
 
-function ad_is_playing() {
-  return document.querySelector("span[data-a-target='video-ad-countdown']") !== null
-}
+let interval_time = 200
+let cur_status = Status.IN_STREAM
+let volume_save = 0
 
-function toggle_volume(mute_ad) {
-  videos = document.querySelectorAll("video")
-  
+function check_for_ad() {
+  let videos = document.querySelectorAll("video")
+  let ad_playing = (document.querySelector("span[data-a-target='video-ad-countdown']") !== null)
+
   // If no video found, stop here
   if (videos.length === 0) {
     console.error("Cannot find videos")
-    return false
-  }
-  
-  // If we want to mute the ad
-  if (mute_ad) { 
-  	// If it's already muted, do nothing
-    if (videos[0].muted) {
-      console.log("Video already muted, nothing to do")
-      return false
-    }
-  }
-  
-  // If the mini video player exists, unmute it and copy volume level
-  if (videos.length == 2) {
-    console.log("Toggling mini player mute status")
-    videos[1].muted = !mute_ad
-    videos[1].volume = videos[0].volume
-  }
-  
-  // Set mute status for the main video player
-  videos[0].muted = mute_ad
-
-  // If we mute, blur the image too
-  if (mute_ad) {
-    videos[0].style.filter = "blur(250px)"
-  } else { // else, unblur
-    videos[0].style.filter = ""
-  }
-  
-  return true
-}
-
-function check_for_ad() {  
-  if (!ad_is_playing()) {
     return
   }
-  
-  console.log("Ad detected")
-  
-  // If the toggle is successful
-  if (toggle_volume(true)) {
-    // stop interval and wait for end of ad
-    clearInterval(interval_id)
-  	setTimeout(wait_for_add, 500)
-  } else {
-    // Otherwise, put the interval back
-    interval_id = setInterval(check_for_ad, interval_time)
+
+  // Handle status change on the main player
+  if (ad_playing && cur_status === Status.IN_STREAM) {
+    console.log("Ad detected")
+
+    // save the volume
+    volume_save = videos[0].volume
+
+    // mute and blur the video
+    videos[0].muted = true
+    videos[0].style.filter = "blur(250px)"
+
+    cur_status = Status.IN_AD
+
+  } else if (!ad_playing && cur_status === Status.IN_AD) {
+    console.log("Ad ended")
+
+    // unmute and unblur the video
+    videos[0].muted = false
+    videos[0].style.filter = ""
+
+    cur_status = Status.IN_STREAM
+  }
+
+
+  // update volume on mini player (if it exists)
+  if (videos.length == 2) {
+    if (cur_status === Status.IN_STREAM) {
+      videos[1].muted = true
+    } else {
+      videos[1].muted = false
+      videos[1].volume = volume_save
+    }
   }
 }
 
-function wait_for_add() {
-  if (ad_is_playing()) {
-    // If ad is still playing, wait more
-    setTimeout(wait_for_add, 500)
-  } else {
-    console.log("End of ad")
-    // toggle volume back
-    toggle_volume(false)
-    // set interval back
-    interval_id = setInterval(check_for_ad, interval_time)
-  }
-}
-
-interval_id = setInterval(check_for_ad, interval_time)
-console.log("Add muter running, interval id =", interval_id)
+setInterval(check_for_ad, interval_time)
