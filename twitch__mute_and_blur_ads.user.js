@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Twitch - Mute and blur ads
-// @version     1.1
+// @version     1.1.1
 // @description Mute video and blur ads. Unmute mini player on top of chat if available.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -14,7 +14,8 @@
 // @match       https://www.twitch.tv/*
 // ==/UserScript==
 
-var check_interval = null
+let interval_id = null
+let interval_time = 500
 
 function ad_is_playing() {
   return document.querySelector("span[data-a-target='video-ad-countdown']") !== null
@@ -68,11 +69,11 @@ function check_for_ad() {
   // If the toggle is successful
   if (toggle_volume(true)) {
     // stop interval and wait for end of ad
-    clearInterval(check_interval)
+    clearInterval(interval_id)
   	setTimeout(wait_for_add, 500)
   } else {
     // Otherwise, put the interval back
-    check_interval = setInterval(check_for_ad, 1000)
+    interval_id = setInterval(check_for_ad, interval_time)
   }
 }
 
@@ -85,9 +86,9 @@ function wait_for_add() {
     // toggle volume back
     toggle_volume(false)
     // set interval back
-    check_interval = setInterval(check_for_ad, 1000)
+    interval_id = setInterval(check_for_ad, interval_time)
   }
 }
 
-check_interval = setInterval(check_for_ad, 1000)
-console.log("Add muter running, interval id =", check_interval)
+interval_id = setInterval(check_for_ad, interval_time)
+console.log("Add muter running, interval id =", interval_id)
