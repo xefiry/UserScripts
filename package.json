@@ -1,0 +1,19 @@
+{
+  "name": "userscripts",
+  "version": "1.0.0",
+  "description": "a list of various UserScripts to improve some websites",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xefiry/UserScripts.git"
+  },
+  "author": "xefiry",
+  "bugs": {
+    "url": "https://github.com/xefiry/UserScripts/issues"
+  },
+  "homepage": "https://github.com/xefiry/UserScripts#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.35.0",
+    "eslint": "^9.35.0",
+    "globals": "^16.4.0"
+  }
+}
