@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Reddit - Enhancer
-// @version     1.5
-// @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, always use best quality video, all gif are videos, no nsfw blur/click)
+// @version     1.6
+// @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, remove search "links", all gif are videos, no nsfw blur/click)
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
@@ -16,20 +16,22 @@
 
 // Increase width limit on subredits homepages & posts
 function increase_display_width() {
-  new_width = "80%"
+  let new_width = "80%"
+  let elem = document.querySelector(".subgrid-container")
 
-  elem = document.querySelector(".subgrid-container")
   if (elem != null && elem.style.width !== new_width) {
     elem.style.width = new_width
   }
 }
 
-function set_video_quality() {
-  key = "@reddit/shreddit-player-media-quality"
-  if (localStorage[key] !== "1080") {
-    localStorage[key] = "1080"
-    location.reload()
-  }
+function no_search_links() {
+  let span
+
+  document.querySelectorAll("search-telemetry-tracker[view-events]").forEach(node => {
+    span = document.createElement("span")
+    span.innerText = node.innerText
+    node.replaceWith(span)
+  })
 }
 
 // removes "gif" attribute from some videos to prevent problems
@@ -124,16 +126,16 @@ document.addEventListener('keydown', function (event) {
   if (buttons === null) {
     return
   }
-  
-  switch(event.key) {
-    case "ArrowLeft":  buttons[0].click(); break;
+
+  switch (event.key) {
+    case "ArrowLeft": buttons[0].click(); break;
     case "ArrowRight": buttons[1].click(); break;
   }
 })
 
 function main() {
   increase_display_width()
-  set_video_quality()
+  no_search_links()
   all_gifs_are_videos()
   add_carousel_listner()
 
