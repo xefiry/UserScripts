@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Reddit - Enhancer
-// @version     1.6
+// @version     1.6.1
 // @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, remove search "links", all gif are videos, no nsfw blur/click)
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -27,6 +27,11 @@ function increase_display_width() {
 function no_search_links() {
   let span
 
+  // Do nothing if it is a search page
+  if (document.location.pathname.search("/search/") !== -1) {
+    return
+  }
+  
   document.querySelectorAll("search-telemetry-tracker[view-events]").forEach(node => {
     span = document.createElement("span")
     span.innerText = node.innerText
