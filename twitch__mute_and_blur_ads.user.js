@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Twitch - Mute and blur ads
-// @version     2.0.0
+// @version     2.0.1
 // @description Mute video and blur ads. Unmute mini player on top of chat if available.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -30,6 +30,11 @@ function check_for_ad() {
   // If no video found, stop here
   if (videos.length === 0) {
     console.error("Cannot find videos")
+    return
+  }
+
+  if (document.URL.search("/stories/") !== -1) {
+    console.log("This is a story, do not mute")
     return
   }
 
