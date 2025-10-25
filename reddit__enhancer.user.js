@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Reddit - Enhancer
-// @version     1.6.2
-// @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, remove search "links", all gif are videos, no nsfw blur/click)
+// @version     1.7
+// @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, remove search "links", all gif are videos)
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
@@ -54,50 +54,6 @@ function all_gifs_are_videos() {
   })
 }
 
-// remove nsfw blur on new reddit
-function no_nsfw_blur() {
-  // for miniatures on the sidebar
-  sidebar = document.querySelector("pdp-right-rail")
-
-  if (sidebar !== null) {
-    // remove blur from images
-    sidebar.querySelectorAll("img").forEach(img => {
-      if (img.style.filter.includes("blur")) {
-        img.style.filter = ""
-      }
-    })
-
-    // remove (-18) svgs
-    sidebar.querySelectorAll("svg").forEach(svg => {
-      if (svg.classList.contains("h-[24px]")) {
-        svg.remove()
-      }
-    })
-  }
-
-  // for miniatures in search result
-  if (document.URL.search("/search/") >= 0) {
-    document.querySelectorAll("faceplate-img").forEach(img => {
-      if (img.classList.contains("thumbnail-blur")) {
-        img.classList.remove("thumbnail-blur")
-      }
-    })
-  }
-}
-
-function no_nsfw_click() {
-  // Click on "View nsfw content"
-  document.querySelectorAll("shreddit-blurred-container").forEach(img => {
-    // Get the overlay inside the container
-    overlay = img.shadowRoot.querySelector(".overlay")
-
-    // If nsfw blur and overlay exists, we click it (not the container)
-    if (img.getAttribute("reason") === "nsfw" && overlay !== null) {
-      overlay.click()
-    }
-  })
-}
-
 var buttons = null
 
 function set_buttons(event) {
@@ -106,7 +62,7 @@ function set_buttons(event) {
 
 function add_carousel_listner() {
   // get all carousels
-  carousels = document.querySelectorAll("gallery-carousel")
+  let carousels = document.querySelectorAll("gallery-carousel")
 
   // if there is only one, get it's buttons
   if (carousels.length === 1) {
@@ -137,9 +93,6 @@ function main() {
   no_search_links()
   all_gifs_are_videos()
   add_carousel_listner()
-
-  no_nsfw_blur()
-  no_nsfw_click()
 }
 
 setTimeout(main, 500);
