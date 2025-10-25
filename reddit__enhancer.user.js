@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Reddit - Enhancer
-// @version     1.6.1
+// @version     1.6.2
 // @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, remove search "links", all gif are videos, no nsfw blur/click)
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -42,22 +42,16 @@ function no_search_links() {
 // removes "gif" attribute from some videos to prevent problems
 // (video playback restarts alone, click on media opens new tab)
 function all_gifs_are_videos() {
-  vid_list = document.querySelectorAll("shreddit-player-2")
-
-  for (i = 0; i < vid_list.length; i++) {
-    vid = vid_list[i]
-
-    if (vid.hasAttribute("gif")) {
-      // remove reddit video controls
-      vid.shadowRoot.querySelector("shreddit-media-ui").remove()
-      // add default video controls
-      vid.shadowRoot.querySelector("video").setAttribute("controls", "controls")
-      // enable loop
-      vid.shadowRoot.querySelector("video").setAttribute("loop", "")
-      // remove gif attribute
-      vid.removeAttribute('gif')
-    }
-  }
+  document.querySelectorAll("shreddit-player-2[gif]").forEach(vid => {
+    // remove reddit video controls
+    vid.shadowRoot.querySelector("shreddit-media-ui").remove()
+    // add default video controls
+    vid.shadowRoot.querySelector("video").setAttribute("controls", "controls")
+    // enable loop
+    vid.shadowRoot.querySelector("video").setAttribute("loop", "")
+    // remove gif attribute
+    vid.removeAttribute('gif')
+  })
 }
 
 // remove nsfw blur on new reddit
