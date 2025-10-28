@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Jira - Utility buttons
-// @version     2.1
+// @version     2.1.1
 // @description Adds buttons for various things to copy from a ticket.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -199,6 +199,9 @@ function init() {
   dropdown.append(dropdown_content)
 
   new_location.insertBefore(dropdown, new_location.firstChild)
+
+  // Min width for right column (to be able to see Dropdown)
+  document.getElementById("issue.views.issue-details.issue-layout.container-right").style.minWidth = "340px"
 }
 
 setInterval(init, 500);
