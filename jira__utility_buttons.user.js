@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Jira - Utility buttons
-// @version     1.1.3
+// @version     2
 // @description Adds buttons for various things to copy from a ticket.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -16,17 +16,35 @@
 
 // CSS style for the buttons
 var styles = `
-.my_buttons {
-  border-width: 0px;
-  border-radius: 3px;
-  font-size: inherit;
-  color: var(--ds-text, #42526E) !important;
-  cursor: pointer;
-  padding: 0px 5px;
-  margin-left: 10px;
+#dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+#dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  z-index: 1;
+}
+
+#dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+#dropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block !important;
 }
 `
-
 var styleSheet = document.createElement("style")
 styleSheet.innerText = styles
 document.head.appendChild(styleSheet)
@@ -37,7 +55,7 @@ function get_ticket() {
 }
 
 function get_name() {
-  tmp = document.querySelector("h1")
+  let tmp = document.querySelector("h1")
 
   if (tmp !== null) {
     return tmp.innerText
@@ -49,7 +67,7 @@ function get_name() {
 }
 
 function get_creator() {
-  tmp = document.querySelector("div[data-testid='issue.views.field.user.reporter']")
+  let tmp = document.querySelector("div[data-testid='issue.views.field.user.reporter']")
 
   if (tmp !== null) {
     return tmp.innerText
@@ -61,7 +79,7 @@ function get_creator() {
 }
 
 function get_url_2() {
-  tmp = document.querySelector("a._11c8dcr7")
+  let tmp = document.querySelector("a._11c8dcr7")
 
   if (tmp !== null) {
     return tmp.href
@@ -73,75 +91,104 @@ function get_url_2() {
 }
 
 function copy_hyperlink_1() {
-  link = document.URL
-  title = get_ticket()
-  content = "<a href='" + link + "'>" + title + "</a>"
+  let link = document.URL
+  let title = get_ticket()
+  let content = "<a href='" + link + "'>" + title + "</a>"
 
   GM_setClipboard(content, "text/html")
 }
 
 function copy_hyperlink_2() {
   // get link from the "Afficher la demande sur le portail" link
-  link = get_url_2()
-  title = get_ticket()
-  content = "<a href='" + link + "'>" + title + "</a>"
+  let link = get_url_2()
+  let title = get_ticket()
+  let content = "<a href='" + link + "'>" + title + "</a>"
 
   GM_setClipboard(content, "text/html")
 }
 
 function copy_text() {
-  content = get_ticket()
+  let content = get_ticket()
 
   GM_setClipboard(content, "text/plain")
 }
 
 function copy_fulltext() {
-  content = get_ticket() + " " + get_name()
+  let content = get_ticket() + " " + get_name()
 
   GM_setClipboard(content, "text/plain")
 }
 
 function copy_tsv() {
-  content = get_ticket() + "\t" + get_name() + "\t" + get_creator()
+  let content = get_ticket() + "\t" + get_name() + "\t" + get_creator()
 
   GM_setClipboard(content, "text/plain")
 }
 
 function copy_markdown() {
-  link = document.URL
-  title = get_ticket()
-  content = "[" + title + "](" + link + ")"
+  let link = document.URL
+  let title = get_ticket()
+  let content = "[" + title + "](" + link + ")"
 
   GM_setClipboard(content, "text/plain")
 }
 
-function create_button(text, click_function) {
-  result = document.createElement("button")
+function toggle_dropdown() {
+  document.getElementById("dropdown-content").classList.toggle("show")
+}
 
-  result.classList.add("my_buttons")
-  result.innerText = text
-  result.addEventListener("click", click_function)
-
-  return result
+// Close the dropdown if the user clicks outside of it
+window.onclick = function (event) {
+  let button = document.getElementById("dropdown-button")
+  let classes = document.getElementById("dropdown-content").classList
+  
+  if (!button.contains(event.target) && classes.contains("show")) {
+    classes.remove("show")
+  }
 }
 
 function init() {
-  // Get the new location for buttons
-  x = document.querySelector("nav > ol")
-  if (x === null) {
-    console.error("Jira better link copy can't work, ol.css-m6vsls not found")
+  // If dropdown menu already exists, do nothing
+  if (document.getElementById("dropdown") !== null) {
     return
   }
 
-  // If no buttons found, create and add them
-  if (document.getElementsByClassName("my_buttons").length == 0) {
-    x.appendChild(create_button("URL 1", copy_hyperlink_1))
-    x.appendChild(create_button("URL 2", copy_hyperlink_2))
-    x.appendChild(create_button("MD",    copy_markdown))
-    x.appendChild(create_button("TXT",   copy_text))
-    x.appendChild(create_button("FULL",  copy_fulltext))
-    x.appendChild(create_button("TSV",   copy_tsv))
+  // Get the new location for button
+  let new_location = document.querySelector("._1e0c1txw._vchhusvi._gy1pu2gc._1p57u2gc._4cvrv2br._2lx2vrvc._1bahh9n0")
+  if (new_location === null) {
+    console.error("Jira better link copy can't work, new button location not found")
+    return
   }
+
+  // Create div for the dropdown with the menu
+  let dropdown = document.createElement("div")
+  dropdown.id = "dropdown"
+  dropdown.innerHTML = `
+  <div id="dropdown-content">
+    <a onclick="copy_hyperlink_1()">URL 1</a>
+    <a onclick="copy_hyperlink_2()">URL 2</a>
+    <a onclick="copy_markdown()">Markdown</a>
+    <a onclick="copy_text()">Ticket</a>
+    <a onclick="copy_fulltext()">Ticket + Name</a>
+    <a onclick="copy_tsv()">TSV</a>
+  </div>
+  `
+
+  // Get source button for model
+  let source_button = document.querySelector(".css-vl1vwy")
+  if (source_button === null) {
+    console.error("Jira better link copy can't work, Create button not found")
+    return
+  }
+
+  // Clone it to create the new button for dropdown
+  let dropdown_button = source_button.cloneNode(true)
+  dropdown_button.innerHTML = dropdown_button.innerHTML.replace("Créer", "Copier")
+  dropdown_button.id = "dropdown-button"
+  dropdown_button.onclick = toggle_dropdown
+
+  dropdown.insertBefore(dropdown_button, dropdown.firstChild)
+  new_location.insertBefore(dropdown, new_location.firstChild)
 }
 
 setInterval(init, 500);
