@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Jira - Utility buttons
-// @version     2.0.1
+// @version     2.1
 // @description Adds buttons for various things to copy from a ticket.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -147,6 +147,15 @@ window.onclick = function (event) {
   }
 }
 
+function create_link(text, click_function) {
+  let result = document.createElement("a")
+
+  result.innerText = text
+  result.addEventListener("click", click_function)
+
+  return result
+}
+
 function init() {
   // If dropdown menu already exists, do nothing
   if (document.getElementById("dropdown") !== null) {
@@ -160,19 +169,9 @@ function init() {
     return
   }
 
-  // Create div for the dropdown with the menu
+  // Create div for the dropdown
   let dropdown = document.createElement("div")
   dropdown.id = "dropdown"
-  dropdown.innerHTML = `
-  <div id="dropdown-content">
-    <a onclick="copy_hyperlink_1()">URL 1</a>
-    <a onclick="copy_hyperlink_2()">URL 2</a>
-    <a onclick="copy_markdown()">Markdown</a>
-    <a onclick="copy_text()">Ticket</a>
-    <a onclick="copy_fulltext()">Ticket + Name</a>
-    <a onclick="copy_tsv()">TSV</a>
-  </div>
-  `
 
   // Get source button for model
   let source_button = document.querySelector(".css-vl1vwy[aria-expanded='false']")
@@ -186,8 +185,19 @@ function init() {
   dropdown_button.innerHTML = dropdown_button.innerHTML.replace("Créer", "Copier")
   dropdown_button.id = "dropdown-button"
   dropdown_button.onclick = toggle_dropdown
+  dropdown.append(dropdown_button)
 
-  dropdown.insertBefore(dropdown_button, dropdown.firstChild)
+  // Create the dropdown content
+  let dropdown_content = document.createElement("div")
+  dropdown_content.id="dropdown-content"
+  dropdown_content.appendChild(create_link("URL 1", copy_hyperlink_1))
+  dropdown_content.appendChild(create_link("URL 2", copy_hyperlink_2))
+  dropdown_content.appendChild(create_link("Markdown", copy_markdown))
+  dropdown_content.appendChild(create_link("Ticket", copy_text))
+  dropdown_content.appendChild(create_link("Ticket + Name", copy_fulltext))
+  dropdown_content.appendChild(create_link("TSV", copy_tsv))
+  dropdown.append(dropdown_content)
+
   new_location.insertBefore(dropdown, new_location.firstChild)
 }
 
