@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Jira - Utility buttons
-// @version     2.1.1
+// @version     2.2
 // @description Adds buttons for various things to copy from a ticket.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -173,17 +173,11 @@ function init() {
   let dropdown = document.createElement("div")
   dropdown.id = "dropdown"
 
-  // Get source button for model
-  let source_button = document.querySelector(".css-vl1vwy[aria-expanded='false']")
-  if (source_button === null) {
-    console.error("Jira better link copy can't work, Create button not found")
-    return
-  }
-
-  // Clone it to create the new button for dropdown
-  let dropdown_button = source_button.cloneNode(true)
-  dropdown_button.innerHTML = dropdown_button.innerHTML.replace("Créer", "Copier")
+  // Create the new button for dropdown
+  let dropdown_button = document.createElement("button")
+  dropdown_button.innerText = "Copier"
   dropdown_button.id = "dropdown-button"
+  dropdown_button.classList = ["css-vl1vwy"]
   dropdown_button.onclick = toggle_dropdown
   dropdown.append(dropdown_button)
 
@@ -199,9 +193,6 @@ function init() {
   dropdown.append(dropdown_content)
 
   new_location.insertBefore(dropdown, new_location.firstChild)
-
-  // Min width for right column (to be able to see Dropdown)
-  document.getElementById("issue.views.issue-details.issue-layout.container-right").style.minWidth = "340px"
 }
 
 setInterval(init, 500);
