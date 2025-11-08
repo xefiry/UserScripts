@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Twitch - Copy followed channels
-// @version     1.0
+// @version     1.1
 // @description Add buton to copy list of followed channels
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -21,7 +21,9 @@ function list_channels() {
     channels.push('"' + node.innerText + '"')
   })
 
-  let all_channels = channels.sort().join(",\n")
+  channels = channels.sort((a,b) => a.localeCompare(b))
+
+  let all_channels = channels.join(",\n")
 
   GM_setClipboard(all_channels, "text/plain")
 }
