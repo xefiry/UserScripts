@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Jira - Utility buttons
-// @version     2.2.1
+// @version     2.2.2
 // @description Adds buttons for various things to copy from a ticket.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -91,7 +91,7 @@ function get_url_2() {
 }
 
 function copy_hyperlink_1() {
-  let link = document.URL
+  let link = window.location.origin + window.location.pathname // URL without params
   let title = get_ticket()
   let content = "<a href='" + link + "'>" + title + "</a>"
 
@@ -126,7 +126,7 @@ function copy_tsv() {
 }
 
 function copy_markdown() {
-  let link = document.URL
+  let link = window.location.origin + window.location.pathname // URL without params
   let title = get_ticket()
   let content = "[" + title + "](" + link + ")"
 
