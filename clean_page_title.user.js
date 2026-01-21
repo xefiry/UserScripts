@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Clean page title
-// @version     1.1
+// @version     1.1.1
 // @description Removes unnecessary text in page title.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -36,7 +36,7 @@ let rules = [
   // wiki pages
   ["wikipedia.org/wiki",            / [—-] Wikip[eé]dia/g,                                     ""],
   ["wiki.archlinux.org/title",      " - ArchWiki",                                             ""],
-  ["eldenring.wiki.fextralife.com", " | Elden Ring Wiki",                                      ""]
+  ["eldenring.wiki.fextralife.com", " | Elden Ring Wiki",                                      ""],
   ["nomanssky.fandom.com/wiki",     " - No Man's Sky Wiki",                                    ""]
 ]
 
