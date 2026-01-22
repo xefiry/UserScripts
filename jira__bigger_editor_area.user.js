@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Jira - Bigger editor area
-// @version     1.0
+// @version     1.0.1
 // @description Removes the height limit for the editor.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -11,7 +11,7 @@
 // @noframes
 // @run-at      document-end
 // @grant       none
-// @match       https://*.atlassian.net/jira/dashboards/*
+// @match       https://*.atlassian.net/browse/*
 // ==/UserScript==
 
 
