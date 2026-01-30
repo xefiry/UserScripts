@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Jira - Auto refresh dashboards
-// @version     1.1
+// @version     1.1.1
 // @description Adds a timer to auto refresh dashboards.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -48,7 +48,7 @@ function refresh() {
 }
 
 function init() {
-  refresh_button = document.querySelector("button.css-vl1vwy")
+  refresh_button = document.querySelector("button[data-testid='dashboard-internal-common.ui.dashboard-refresh-button.dashboard-refresh-button']")
 
   if (refresh_button != null) {
     refresh_text = refresh_button.childNodes[0].innerHTML
