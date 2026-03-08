@@ -14,6 +14,7 @@ You can also use [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey]
 ### Leisure
 
 - [Clean page title](https://raw.githubusercontent.com/xefiry/UserScripts/master/clean_page_title.user.js)
+- [Remove target="_blank" in links](https://raw.githubusercontent.com/xefiry/UserScripts/master/remove_target_blank_in_links.user.js)
 - [4chan - Enhancer](https://raw.githubusercontent.com/xefiry/UserScripts/master/4chan__enhancer.user.js)
 - [Fextralife - Clean search links](https://raw.githubusercontent.com/xefiry/UserScripts/master/fextralife__clean_search_links.user.js)
 - [Fextralife - Fullscreen Elden Ring map](https://raw.githubusercontent.com/xefiry/UserScripts/master/fextralife__fullscreen_elden_ring_map.user.js)
