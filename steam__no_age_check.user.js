@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name        Steam - No age check
-// @version     1.0
+// @version     1.0.1
 // @description Removes age check when accessing a steam game page by filling automaticly a birth date.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
 // @supportURL  https://github.com/xefiry/UserScripts/issues
-// @downloadURL https://raw.githubusercontent.com/xefiry/UserScripts/master/steam__no_age_check.user.js
+// @downloadURL https://github.com/xefiry/UserScripts/raw/refs/heads/master/steam__no_age_check.user.js
 // @icon        https://steamcommunity.com/favicon.ico
 // @noframes
 // @run-at      document-end

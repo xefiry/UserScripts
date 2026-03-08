@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name        Clean page title
-// @version     1.1.1
+// @version     1.1.2
 // @description Removes unnecessary text in page title.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
 // @supportURL  https://github.com/xefiry/UserScripts/issues
-// @downloadURL https://raw.githubusercontent.com/xefiry/UserScripts/master/clean_page_title.user.js
+// @downloadURL https://github.com/xefiry/UserScripts/raw/refs/heads/master/clean_page_title.user.js
 // @noframes
 // @run-at      document-end
 // @grant       none

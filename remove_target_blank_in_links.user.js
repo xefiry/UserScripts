@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name        Remove target="_blank" in links
-// @version     1.0
+// @version     1.0.1
 // @description Removes all target="_blank" from links (a) to prevent opening links in a new tab on a left mouse click. Opening in new tab should be on mouse click only. See https://www.w3schools.com/tags/att_a_target.asp.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
 // @supportURL  https://github.com/xefiry/UserScripts/issues
-// @downloadURL https://raw.githubusercontent.com/xefiry/UserScripts/master/remove_target_blank_in_links.user.js
+// @downloadURL https://github.com/xefiry/UserScripts/raw/refs/heads/master/remove_target_blank_in_links.user.js
 // @noframes
 // @run-at      document-end
 // @grant       none

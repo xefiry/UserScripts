@@ -13,31 +13,31 @@ You can also use [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey]
 
 ### Leisure
 
-- [Clean page title](https://raw.githubusercontent.com/xefiry/UserScripts/master/clean_page_title.user.js)
-- [Remove target="_blank" in links](https://raw.githubusercontent.com/xefiry/UserScripts/master/remove_target_blank_in_links.user.js)
-- [4chan - Enhancer](https://raw.githubusercontent.com/xefiry/UserScripts/master/4chan__enhancer.user.js)
-- [Fextralife - Clean search links](https://raw.githubusercontent.com/xefiry/UserScripts/master/fextralife__clean_search_links.user.js)
-- [Fextralife - Fullscreen Elden Ring map](https://raw.githubusercontent.com/xefiry/UserScripts/master/fextralife__fullscreen_elden_ring_map.user.js)
-- [GitHub - Load comments](https://raw.githubusercontent.com/xefiry/UserScripts/master/github__load_comments.user.js)
-- [Multistre.am - Close stream on middle click](https://raw.githubusercontent.com/xefiry/UserScripts/master/multistream__mmb_close.user.js)
-- [NexusMods - Auto slow download](https://raw.githubusercontent.com/xefiry/UserScripts/master/nexusmods__auto_slow_download.user.js)
-- [Reddit - Enhancer](https://raw.githubusercontent.com/xefiry/UserScripts/master/reddit__enhancer.user.js)
-- [Steam - No age check](https://raw.githubusercontent.com/xefiry/UserScripts/master/steam__no_age_check.user.js)
-- [Twitch - Copy followed channels](https://raw.githubusercontent.com/xefiry/UserScripts/master/twitch__copy_followed_channel.user.js)
-- [Twitch - Mute and blur ads](https://raw.githubusercontent.com/xefiry/UserScripts/master/twitch__mute_and_blur_ads.user.js)
+- [Clean page title](https://github.com/xefiry/UserScripts/raw/refs/heads/master/clean_page_title.user.js)
+- [Remove target="_blank" in links](https://github.com/xefiry/UserScripts/raw/refs/heads/master/remove_target_blank_in_links.user.js)
+- [4chan - Enhancer](https://github.com/xefiry/UserScripts/raw/refs/heads/master/4chan__enhancer.user.js)
+- [Fextralife - Clean search links](https://github.com/xefiry/UserScripts/raw/refs/heads/master/fextralife__clean_search_links.user.js)
+- [Fextralife - Fullscreen Elden Ring map](https://github.com/xefiry/UserScripts/raw/refs/heads/master/fextralife__fullscreen_elden_ring_map.user.js)
+- [GitHub - Load comments](https://github.com/xefiry/UserScripts/raw/refs/heads/master/github__load_comments.user.js)
+- [Multistre.am - Close stream on middle click](https://github.com/xefiry/UserScripts/raw/refs/heads/master/multistream__mmb_close.user.js)
+- [NexusMods - Auto slow download](https://github.com/xefiry/UserScripts/raw/refs/heads/master/nexusmods__auto_slow_download.user.js)
+- [Reddit - Enhancer](https://github.com/xefiry/UserScripts/raw/refs/heads/master/reddit__enhancer.user.js)
+- [Steam - No age check](https://github.com/xefiry/UserScripts/raw/refs/heads/master/steam__no_age_check.user.js)
+- [Twitch - Copy followed channels](https://github.com/xefiry/UserScripts/raw/refs/heads/master/twitch__copy_followed_channel.user.js)
+- [Twitch - Mute and blur ads](https://github.com/xefiry/UserScripts/raw/refs/heads/master/twitch__mute_and_blur_ads.user.js)
 
 ### Work
 
-- [Jira - Auto refresh dashboards](https://raw.githubusercontent.com/xefiry/UserScripts/master/jira__auto_refresh_dashboards.user.js)
-- [Jira - Bigger editor area](https://raw.githubusercontent.com/xefiry/UserScripts/master/jira__bigger_editor_area.user.js)
-- [Jira - Shorter column name](https://raw.githubusercontent.com/xefiry/UserScripts/master/jira__shorter_column_name.user.js)
-- [Jira - Utility buttons](https://raw.githubusercontent.com/xefiry/UserScripts/master/jira__utility_buttons.user.js)
-- [Lucca - Autologin](https://raw.githubusercontent.com/xefiry/UserScripts/master/lucca__autologin.user.js)
+- [Jira - Auto refresh dashboards](https://github.com/xefiry/UserScripts/raw/refs/heads/master/jira__auto_refresh_dashboards.user.js)
+- [Jira - Bigger editor area](https://github.com/xefiry/UserScripts/raw/refs/heads/master/jira__bigger_editor_area.user.js)
+- [Jira - Shorter column name](https://github.com/xefiry/UserScripts/raw/refs/heads/master/jira__shorter_column_name.user.js)
+- [Jira - Utility buttons](https://github.com/xefiry/UserScripts/raw/refs/heads/master/jira__utility_buttons.user.js)
+- [Lucca - Autologin](https://github.com/xefiry/UserScripts/raw/refs/heads/master/lucca__autologin.user.js)
 
 ### Archive
 
 These script will not be updated, because I do not use them anymore
 
-- [Hianime - Always dub](https://raw.githubusercontent.com/xefiry/UserScripts/master/hianime__always_dub.user.js) - Just keep the damn cookies
-- [Jira - Disable acronym highlight](https://raw.githubusercontent.com/xefiry/UserScripts/master/jira__disable_acronym_highlight.user.js) - Can be disabled in Jira settings
-- [Yahoo - Spam counter](https://raw.githubusercontent.com/xefiry/UserScripts/master/yahoo__spam_counter.user.js) - I use Thunderbird instead of Yahoo webmail
+- [Hianime - Always dub](https://github.com/xefiry/UserScripts/raw/refs/heads/master/hianime__always_dub.user.js) - Just keep the damn cookies
+- [Jira - Disable acronym highlight](https://github.com/xefiry/UserScripts/raw/refs/heads/master/jira__disable_acronym_highlight.user.js) - Can be disabled in Jira settings
+- [Yahoo - Spam counter](https://github.com/xefiry/UserScripts/raw/refs/heads/master/yahoo__spam_counter.user.js) - I use Thunderbird instead of Yahoo webmail

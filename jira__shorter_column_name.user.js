@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name        Jira - Shorter column name
-// @version     1.0
+// @version     1.0.1
 // @description Renames a few column to be shorter.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
 // @supportURL  https://github.com/xefiry/UserScripts/issues
-// @downloadURL https://raw.githubusercontent.com/xefiry/UserScripts/master/jira__shorter_column_name.user.js
+// @downloadURL https://github.com/xefiry/UserScripts/raw/refs/heads/master/jira__shorter_column_name.user.js
 // @icon        https://www.atlassian.com/favicon.ico
 // @noframes
 // @run-at      document-end

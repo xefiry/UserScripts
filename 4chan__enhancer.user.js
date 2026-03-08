@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name          4chan - Enhancer
-// @version       1.6.1
+// @version       1.6.2
 // @description   Various enhancements for 4chan : Quick acces to "Set filters", dates displayed with local format, video progress bar on hover ("Image hover" needs to be activated in 4chan settings), colored digits, clean linkified URLs
 // @author        xefiry
 // @namespace     https://github.com/xefiry
 // @homepageURL   https://github.com/xefiry/UserScripts
 // @supportURL    https://github.com/xefiry/UserScripts/issues
-// @downloadURL   https://raw.githubusercontent.com/xefiry/UserScripts/master/4chan__enhancer.user.js
+// @downloadURL   https://github.com/xefiry/UserScripts/raw/refs/heads/master/4chan__enhancer.user.js
 // @icon          https://s.4cdn.org/image/favicon.ico
 // @noframes
 // @run-at        document-end

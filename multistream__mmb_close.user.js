@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name        multistre.am - Close stream on middle click
-// @version     1.0
+// @version     1.0.1
 // @description Close stream when middle mouse click on header
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
 // @supportURL  https://github.com/xefiry/UserScripts/issues
-// @downloadURL https://raw.githubusercontent.com/xefiry/UserScripts/master/multistream__mmb_close.user.js
+// @downloadURL https://github.com/xefiry/UserScripts/raw/refs/heads/master/multistream__mmb_close.user.js
 // @icon        https://multistre.am/static/images/favicon.jpg
 // @noframes
 // @run-at      document-end

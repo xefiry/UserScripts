@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name        Reddit - Enhancer
-// @version     1.7
+// @version     1.7.1
 // @description Various enhancements for Reddit (increase display width, added arrow controls to scroll images, remove search "links", all gif are videos)
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
 // @supportURL  https://github.com/xefiry/UserScripts/issues
-// @downloadURL https://raw.githubusercontent.com/xefiry/UserScripts/master/reddit__enhancer.user.js
+// @downloadURL https://github.com/xefiry/UserScripts/raw/refs/heads/master/reddit__enhancer.user.js
 // @icon        https://www.redditstatic.com/shreddit/assets/favicon/64x64.png
 // @noframes
 // @run-at      document-end

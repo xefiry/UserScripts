@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name        Twitch - Mute and blur ads
-// @version     2.0.1
+// @version     2.0.2
 // @description Mute video and blur ads. Unmute mini player on top of chat if available.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
 // @supportURL  https://github.com/xefiry/UserScripts/issues
-// @downloadURL https://raw.githubusercontent.com/xefiry/UserScripts/master/twitch__mute_and_blur_ads.user.js
+// @downloadURL https://github.com/xefiry/UserScripts/raw/refs/heads/master/twitch__mute_and_blur_ads.user.js
 // @icon        https://assets.twitch.tv/assets/favicon-32-e29e246c157142c94346.png
 // @noframes
 // @run-at      document-end

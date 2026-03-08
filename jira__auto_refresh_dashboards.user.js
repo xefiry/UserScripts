@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name        Jira - Auto refresh dashboards
-// @version     1.1.1
+// @version     1.1.2
 // @description Adds a timer to auto refresh dashboards.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
 // @supportURL  https://github.com/xefiry/UserScripts/issues
-// @downloadURL https://raw.githubusercontent.com/xefiry/UserScripts/master/jira__auto_refresh_dashboards.user.js
+// @downloadURL https://github.com/xefiry/UserScripts/raw/refs/heads/master/jira__auto_refresh_dashboards.user.js
 // @icon        https://www.atlassian.com/favicon.ico
 // @noframes
 // @run-at      document-end

@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name        Yahoo - Spam counter
-// @version     1.0
+// @version     1.0.1
 // @description Adds a spam counter in Yahoo mail.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
 // @supportURL  https://github.com/xefiry/UserScripts/issues
-// @downloadURL https://raw.githubusercontent.com/xefiry/UserScripts/master/yahoo__spam_counter.user.js
+// @downloadURL https://github.com/xefiry/UserScripts/raw/refs/heads/master/yahoo__spam_counter.user.js
 // @icon        https://s.yimg.com/nq/nr/img/favicon_cWDEiZtrqTWONMlAUlZWSgK3G1KMiDm8HXxTSbzD7S8_v1.ico
 // @noframes
 // @run-at      document-end

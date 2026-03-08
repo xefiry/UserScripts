@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name        Jira - Bigger editor area
-// @version     1.0.1
+// @version     1.0.2
 // @description Removes the height limit for the editor.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
 // @supportURL  https://github.com/xefiry/UserScripts/issues
-// @downloadURL https://raw.githubusercontent.com/xefiry/UserScripts/master/jira__bigger_editor_area.user.js
+// @downloadURL https://github.com/xefiry/UserScripts/raw/refs/heads/master/jira__bigger_editor_area.user.js
 // @icon        https://www.atlassian.com/favicon.ico
 // @noframes
 // @run-at      document-end

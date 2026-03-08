@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name        Twitch - Copy followed channels
-// @version     1.1
+// @version     1.1.1
 // @description Add buton to copy list of followed channels
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
 // @supportURL  https://github.com/xefiry/UserScripts/issues
-// @downloadURL https://raw.githubusercontent.com/xefiry/UserScripts/master/twitch__copy_followed_channel.user.js
+// @downloadURL https://github.com/xefiry/UserScripts/raw/refs/heads/master/twitch__copy_followed_channel.user.js
 // @icon        https://assets.twitch.tv/assets/favicon-32-e29e246c157142c94346.png
 // @noframes
 // @run-at      document-end

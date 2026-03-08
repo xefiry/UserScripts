@@ -6,7 +6,7 @@
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
 // @supportURL  https://github.com/xefiry/UserScripts/issues
-// @downloadURL https://raw.githubusercontent.com/xefiry/UserScripts/master/__name__.user.js
+// @downloadURL https://github.com/xefiry/UserScripts/raw/refs/heads/master/__name__.user.js
 // @icon        http://xxxx/icon.png
 // @noframes
 // @run-at      document-end / document-idle

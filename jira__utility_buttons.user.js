@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name        Jira - Utility buttons
-// @version     2.2.2
+// @version     2.2.3
 // @description Adds buttons for various things to copy from a ticket.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
 // @supportURL  https://github.com/xefiry/UserScripts/issues
-// @downloadURL https://raw.githubusercontent.com/xefiry/UserScripts/master/jira__utility_buttons.user.js
+// @downloadURL https://github.com/xefiry/UserScripts/raw/refs/heads/master/jira__utility_buttons.user.js
 // @icon        https://www.atlassian.com/favicon.ico
 // @noframes
 // @run-at      document-end
