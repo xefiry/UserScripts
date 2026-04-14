@@ -29,7 +29,6 @@ You can also use [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey]
 ### Work
 
 - [Jira - Auto refresh dashboards](https://github.com/xefiry/UserScripts/raw/refs/heads/master/jira__auto_refresh_dashboards.user.js)
-- [Jira - Bigger editor area](https://github.com/xefiry/UserScripts/raw/refs/heads/master/jira__bigger_editor_area.user.js)
 - [Jira - Shorter column name](https://github.com/xefiry/UserScripts/raw/refs/heads/master/jira__shorter_column_name.user.js)
 - [Jira - Utility buttons](https://github.com/xefiry/UserScripts/raw/refs/heads/master/jira__utility_buttons.user.js)
 - [Lucca - Autologin](https://github.com/xefiry/UserScripts/raw/refs/heads/master/lucca__autologin.user.js)
