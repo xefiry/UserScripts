@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Lucca - Autologin
-// @version     1.0.1
+// @version     1.0.2
 // @description Automaticly click on "Log in using your company account" to log on Lucca
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -11,10 +11,10 @@
 // @noframes
 // @run-at      document-end
 // @grant       none
-// @match       https://packsolutions.ilucca.net/identity/login*
+// @match       https://*.ilucca.net/identity/login*
 // ==/UserScript==
 
-button = document.querySelector("a.button")
+let button = document.querySelector("a.button")
 if (button.innerText === "Log in using your company account") {
   button.click()
 }
