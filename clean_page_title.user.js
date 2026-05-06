@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Clean page title
-// @version     1.1.2
+// @version     1.1.3
 // @description Removes unnecessary text in page title.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -11,7 +11,6 @@
 // @run-at      document-end
 // @grant       none
 // @match       https://github.com/*
-// @match       https://hianime.to/*
 // @match       https://myanimelist.net/anime/*
 // @match       https://*.nexusmods.com/*/mods/*
 // @match       https://www.senscritique.com/*
@@ -26,7 +25,6 @@
 let rules = [
 // Site to apply rule               What to search for                                        What to replace it with
   ["github.com",                    /^(GitHub - )?([A-Za-z0-9._-]+\/[A-Za-z0-9._-]+)(: .*)?$/, "$2"],
-  ["hianime.to",                    /Watch (.*) English Sub\/Dub online Free on HiAnime.to/g,  "$1"],
   ["myanimelist.net/anime",         " - MyAnimeList.net",                                      ""],
   ["nexusmods.com",                 / at [A-Za-z0-9 ']+ Nexus - [Mm]ods and [Cc]ommunity/g,    ""],
   ["senscritique.com",              " - SensCritique",                                         ""],
