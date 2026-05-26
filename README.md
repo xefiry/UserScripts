@@ -18,7 +18,6 @@ You can also use [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey]
 - [4chan - Enhancer](https://github.com/xefiry/UserScripts/raw/refs/heads/master/4chan__enhancer.user.js)
 - [Fextralife - Clean search links](https://github.com/xefiry/UserScripts/raw/refs/heads/master/fextralife__clean_search_links.user.js)
 - [Fextralife - Fullscreen Elden Ring map](https://github.com/xefiry/UserScripts/raw/refs/heads/master/fextralife__fullscreen_elden_ring_map.user.js)
-- [GitHub - Load comments](https://github.com/xefiry/UserScripts/raw/refs/heads/master/github__load_comments.user.js)
 - [Multistre.am - Close stream on middle click](https://github.com/xefiry/UserScripts/raw/refs/heads/master/multistream__mmb_close.user.js)
 - [NexusMods - Auto slow download](https://github.com/xefiry/UserScripts/raw/refs/heads/master/nexusmods__auto_slow_download.user.js)
 - [Reddit - Enhancer](https://github.com/xefiry/UserScripts/raw/refs/heads/master/reddit__enhancer.user.js)
@@ -32,11 +31,3 @@ You can also use [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey]
 - [Jira - Shorter column name](https://github.com/xefiry/UserScripts/raw/refs/heads/master/jira__shorter_column_name.user.js)
 - [Jira - Utility buttons](https://github.com/xefiry/UserScripts/raw/refs/heads/master/jira__utility_buttons.user.js)
 - [Lucca - Autologin](https://github.com/xefiry/UserScripts/raw/refs/heads/master/lucca__autologin.user.js)
-
-### Archive
-
-These script will not be updated, because I do not use them anymore
-
-- [Hianime - Always dub](https://github.com/xefiry/UserScripts/raw/refs/heads/master/hianime__always_dub.user.js) - Just keep the damn cookies
-- [Jira - Disable acronym highlight](https://github.com/xefiry/UserScripts/raw/refs/heads/master/jira__disable_acronym_highlight.user.js) - Can be disabled in Jira settings
-- [Yahoo - Spam counter](https://github.com/xefiry/UserScripts/raw/refs/heads/master/yahoo__spam_counter.user.js) - I use Thunderbird instead of Yahoo webmail
