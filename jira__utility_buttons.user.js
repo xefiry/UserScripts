@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Jira - Utility buttons
-// @version     2.2.4
+// @version     2.3
 // @description Adds buttons for various things to copy from a ticket.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -173,11 +173,16 @@ function init() {
   let dropdown = document.createElement("div")
   dropdown.id = "dropdown"
 
+  // get class from another button for model
+  let model = document.querySelector("button[aria-label='Add Response']")
+
   // Create the new button for dropdown
   let dropdown_button = document.createElement("button")
   dropdown_button.innerText = "Copier"
   dropdown_button.id = "dropdown-button"
-  dropdown_button.classList = ["css-1psnbih"]
+  if (model !== null) {
+    dropdown_button.classList = model.classList
+  }
   dropdown_button.onclick = toggle_dropdown
   dropdown.append(dropdown_button)
 
