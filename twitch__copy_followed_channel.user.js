@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Twitch - Copy followed channels
-// @version     1.2
-// @description Add buton to copy list of followed channels
+// @version     1.2.1
+// @description Add buton to copy list of followed channels for Chatterino
 // @author      xefiry
 // @namespace   https://github.com/xefiry
 // @homepageURL https://github.com/xefiry/UserScripts
@@ -18,7 +18,7 @@ function list_channels() {
   let channels = []
 
   document.querySelectorAll(".info").forEach(node => {
-    channels.push('"' + node.innerText + '"')
+    channels.push('            "' + node.innerText + '"')
   })
 
   channels = channels.reverse()
