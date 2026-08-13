@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Clean page title
-// @version     1.1.3
+// @version     1.1.4
 // @description Removes unnecessary text in page title.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -36,27 +36,27 @@ let rules = [
   ["wiki.archlinux.org/title",      " - ArchWiki",                                             ""],
   ["eldenring.wiki.fextralife.com", " | Elden Ring Wiki",                                      ""],
   ["nomanssky.fandom.com/wiki",     " - No Man's Sky Wiki",                                    ""]
-]
+];
 
 function do_rename() {
   filtered_rules.forEach(rule => {
-    console.debug(rule[0] + " applied")
+    console.debug(rule[0] + " applied");
     document.title = document.title.replace(rule[1], rule[2]);
-  })
+  });
 }
 
-let url = document.URL
+let url = document.URL;
 // we filter the rules to keep only the ones that matches
-let filtered_rules = rules.filter(rule => url.search(rule[0]) != -1)
+let filtered_rules = rules.filter(rule => url.search(rule[0]) != -1);
 
-console.debug({url})
-console.debug({rules})
-console.debug({filtered_rules})
+console.debug({url});
+console.debug({rules});
+console.debug({filtered_rules});
 
 setTimeout(do_rename,  500); // .5s delay
 
 // for senscritique.com, we try multiple times
 if (url.search("senscritique.com") != -1) {
-  console.log("senscritique.com detected, we will try to apply rule multiple times")
+  console.log("senscritique.com detected, we will try to apply rule multiple times");
   setInterval(do_rename, 5000); //  every 5 second
 }

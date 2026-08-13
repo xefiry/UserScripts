@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Lucca - Autologin
-// @version     1.1
+// @version     1.1.1
 // @description Automaticly click on "Log in using your company account" to log on Lucca
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -14,4 +14,4 @@
 // @match       https://*.ilucca.net/identity/login*
 // ==/UserScript==
 
-document.querySelector("a.button").click()
+document.querySelector("a.button").click();

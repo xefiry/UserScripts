@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Remove target="_blank" in links
-// @version     1.0.1
+// @version     1.0.2
 // @description Removes all target="_blank" from links (a) to prevent opening links in a new tab on a left mouse click. Opening in new tab should be on mouse click only. See https://www.w3schools.com/tags/att_a_target.asp.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -14,17 +14,17 @@
 // ==/UserScript==
 
 function main() {
-  let nb = 0
+  let nb = 0;
 
   document.querySelectorAll("a[target='_blank']").forEach(a => {
-    console.log(a)
-    a.removeAttribute("target")
-    nb++
-  })
+    console.log(a);
+    a.removeAttribute("target");
+    nb++;
+  });
 
   if (nb > 0) {
-    console.log(`Removed ${nb} target="_blank"`)
+    console.log(`Removed ${nb} target="_blank"`);
   }
 }
 
-setInterval(main, 1000)
+setInterval(main, 1000);

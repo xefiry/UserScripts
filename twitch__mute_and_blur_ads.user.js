@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Twitch - Mute and blur ads
-// @version     2.1
+// @version     2.1.1
 // @description Mute video and blur ads. Unmute mini player on top of chat if available.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -19,52 +19,52 @@ const Status = {
   IN_AD: 1
 };
 
-let interval_time = 200
-let cur_status = Status.IN_STREAM
-let volume_save = 0
+let interval_time = 200;
+let cur_status = Status.IN_STREAM;
+let volume_save = 0;
 
 function check_for_ad() {
-  let videos = document.querySelectorAll("video")
-  let ad_playing = (document.querySelector("span[data-a-target='video-ad-countdown']") !== null)
+  let videos = document.querySelectorAll("video");
+  let ad_playing = (document.querySelector("span[data-a-target='video-ad-countdown']") !== null);
 
   // If no video found, or if it is a story, stop here
   if (videos.length === 0 || document.URL.search("/stories/") !== -1) {
-    return
+    return;
   }
 
   // Handle status change on the main player
   if (ad_playing && cur_status === Status.IN_STREAM) {
-    console.log("Ad detected")
+    console.log("Ad detected");
 
     // save the volume
-    volume_save = videos[0].volume
+    volume_save = videos[0].volume;
 
     // mute and blur the video
-    videos[0].muted = true
-    videos[0].style.filter = "blur(250px)"
+    videos[0].muted = true;
+    videos[0].style.filter = "blur(250px)";
 
-    cur_status = Status.IN_AD
+    cur_status = Status.IN_AD;
 
   } else if (!ad_playing && cur_status === Status.IN_AD) {
-    console.log("Ad ended")
+    console.log("Ad ended");
 
     // unmute and unblur the video
-    videos[0].muted = false
-    videos[0].style.filter = ""
+    videos[0].muted = false;
+    videos[0].style.filter = "";
 
-    cur_status = Status.IN_STREAM
+    cur_status = Status.IN_STREAM;
   }
 
 
   // update volume on mini player (if it exists)
   if (videos.length == 2) {
     if (cur_status === Status.IN_STREAM) {
-      videos[1].muted = true
+      videos[1].muted = true;
     } else {
-      videos[1].muted = false
-      videos[1].volume = volume_save
+      videos[1].muted = false;
+      videos[1].volume = volume_save;
     }
   }
 }
 
-setInterval(check_for_ad, interval_time)
+setInterval(check_for_ad, interval_time);

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Twitch - Copy followed channels
-// @version     1.2.1
+// @version     1.2.2
 // @description Add buton to copy list of followed channels for Chatterino
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -15,28 +15,28 @@
 // ==/UserScript==
 
 function list_channels() {
-  let channels = []
+  let channels = [];
 
   document.querySelectorAll(".info").forEach(node => {
-    channels.push('            "' + node.innerText + '"')
-  })
+    channels.push('            "' + node.innerText + '"');
+  });
 
-  channels = channels.reverse()
+  channels = channels.reverse();
 
-  let all_channels = channels.join(",\n")
+  let all_channels = channels.join(",\n");
 
-  GM_setClipboard(all_channels, "text/plain")
+  GM_setClipboard(all_channels, "text/plain");
 }
 
 function init() {
-  let new_location = document.querySelector("h1").parentNode
+  let new_location = document.querySelector("h1").parentNode;
 
-  let button = document.createElement("button")
-  button.id = "new_button"
-  button.innerText = "Copy channel list"
-  button.onclick = list_channels
+  let button = document.createElement("button");
+  button.id = "new_button";
+  button.innerText = "Copy channel list";
+  button.onclick = list_channels;
 
-  new_location.appendChild(button)
+  new_location.appendChild(button);
 }
 
 setTimeout(init,  500); // .5s delay

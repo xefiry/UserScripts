@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        NexusMods - Auto slow download
-// @version     1.1.1
+// @version     1.1.2
 // @description Automaticly uses "Slow download" option.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -15,10 +15,10 @@
 // ==/UserScript==
 
 function main() {
-  let x = document.querySelector("mod-file-download")
+  let x = document.querySelector("mod-file-download");
 
   if (x !== null) {
-    x.shadowRoot.querySelector("button").click()
+    x.shadowRoot.querySelector("button").click();
   }
 }
 

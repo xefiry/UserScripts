@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Fextralife - Clean search links
-// @version     1.1.1
+// @version     1.1.2
 // @description Cleans Fextralife search links so they don't point to google.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -16,8 +16,8 @@
 
 function main() {
   document.querySelectorAll("a.gs-title").forEach(link => {
-    link.removeAttribute("data-cturl")
-  })
+    link.removeAttribute("data-cturl");
+  });
 }
 
-setInterval(main, 2000)
+setInterval(main, 2000);

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Fextralife - Fullscreen Elden Ring map
-// @version     1.1.1
+// @version     1.1.2
 // @description Display Elden Ring map in "fullscreen".
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -16,11 +16,11 @@
 
 // Search for the maps and put them fullscreen
 document.querySelectorAll("iframe.interactivemapcontainer").forEach(map => {
-  map.style.width = "100%"
-  map.style.height = "100%"
-  map.style.position = "fixed"
-  map.style.top = 0
-  map.style.left = 0
-  map.style.zIndex = 999999
-  map.style.backgroundColor = "rgb(34, 34, 34)"
-})
+  map.style.width = "100%";
+  map.style.height = "100%";
+  map.style.position = "fixed";
+  map.style.top = 0;
+  map.style.left = 0;
+  map.style.zIndex = 999999;
+  map.style.backgroundColor = "rgb(34, 34, 34)";
+});
