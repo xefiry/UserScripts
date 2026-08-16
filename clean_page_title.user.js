@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Clean page title
-// @version     1.2
+// @version     1.2.1
 // @description Removes unnecessary text in page title.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -21,6 +21,7 @@
 // @match       https://eldenring.wiki.fextralife.com/*
 // @match       https://nomanssky.fandom.com/wiki/*
 // @match       https://stardewvalleywiki.com/*
+// @match       https://www.stardewvalleywiki.com/*
 // ==/UserScript==
 
 let rules = [
