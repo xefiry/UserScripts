@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Clean page title
-// @version     1.1.4
+// @version     1.2
 // @description Removes unnecessary text in page title.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -20,6 +20,7 @@
 // @match       https://wiki.archlinux.org/title/*
 // @match       https://eldenring.wiki.fextralife.com/*
 // @match       https://nomanssky.fandom.com/wiki/*
+// @match       https://stardewvalleywiki.com/*
 // ==/UserScript==
 
 let rules = [
@@ -35,7 +36,8 @@ let rules = [
   ["wikipedia.org/wiki",            / [—-] Wikip[eé]dia/g,                                     ""],
   ["wiki.archlinux.org/title",      " - ArchWiki",                                             ""],
   ["eldenring.wiki.fextralife.com", " | Elden Ring Wiki",                                      ""],
-  ["nomanssky.fandom.com/wiki",     " - No Man's Sky Wiki",                                    ""]
+  ["nomanssky.fandom.com/wiki",     " - No Man's Sky Wiki",                                    ""],
+  ["stardewvalleywiki.com",         " - Stardew Valley Wiki",                                  ""]
 ];
 
 function do_rename() {
