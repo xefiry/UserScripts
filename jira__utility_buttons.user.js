@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Jira - Utility buttons
-// @version     2.3.2
+// @version     2.3.3
 // @description Adds buttons for various things to copy from a ticket.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -163,7 +163,7 @@ function init() {
   }
 
   // Get the new location for button
-  let new_location = document.querySelector("._1e0c1txw._vchhusvi._gy1pu2gc._1p57u2gc._4cvrv2br._2lx2vrvc._1bahh9n0");
+  let new_location = document.querySelector("#jira-issue-header-actions").firstChild.firstChild;
   if (new_location === null) {
     console.error("Jira better link copy can't work, new button location not found");
     return;
