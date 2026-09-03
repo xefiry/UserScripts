@@ -20,7 +20,6 @@ You can also use [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey]
 - [Fextralife - Fullscreen Elden Ring map](https://github.com/xefiry/UserScripts/raw/refs/heads/master/fextralife__fullscreen_elden_ring_map.user.js)
 - [Multistre.am - Close stream on middle click](https://github.com/xefiry/UserScripts/raw/refs/heads/master/multistream__mmb_close.user.js)
 - [NexusMods - Auto slow download](https://github.com/xefiry/UserScripts/raw/refs/heads/master/nexusmods__auto_slow_download.user.js)
-- [Reddit - Enhancer](https://github.com/xefiry/UserScripts/raw/refs/heads/master/reddit__enhancer.user.js)
 - [Steam - No age check](https://github.com/xefiry/UserScripts/raw/refs/heads/master/steam__no_age_check.user.js)
 - [Twitch - Copy followed channels](https://github.com/xefiry/UserScripts/raw/refs/heads/master/twitch__copy_followed_channel.user.js)
 - [Twitch - Mute and blur ads](https://github.com/xefiry/UserScripts/raw/refs/heads/master/twitch__mute_and_blur_ads.user.js)
