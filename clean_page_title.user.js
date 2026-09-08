@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Clean page title
-// @version     1.2.1
+// @version     1.3
 // @description Removes unnecessary text in page title.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -16,6 +16,7 @@
 // @match       https://www.senscritique.com/*
 // @match       https://www.spirit-of-metal.com/en/band/*
 // @match       https://store.steampowered.com/app/*
+// @match       https://www.twitch.tv/*
 // @match       https://*.wikipedia.org/wiki*
 // @match       https://wiki.archlinux.org/title/*
 // @match       https://eldenring.wiki.fextralife.com/*
@@ -33,6 +34,7 @@ let rules = [
   ["spirit-of-metal.com",           " - discography, line-up, biography, interviews, photos",  ""],
   ["store.steampowered.com",        " on Steam",                                               ""],
   ["store.steampowered.com",        /^Save [0-9]+% on /g,                                      ""],
+  ["www.twitch.tv",                 " - Twitch",                                               ""],
   // wiki pages
   ["wikipedia.org/wiki",            / [—-] Wikip[eé]dia/g,                                     ""],
   ["wiki.archlinux.org/title",      " - ArchWiki",                                             ""],
