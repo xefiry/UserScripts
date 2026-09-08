@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Clean page title
-// @version     1.3
+// @version     1.4
 // @description Removes unnecessary text in page title.
 // @author      xefiry
 // @namespace   https://github.com/xefiry
@@ -58,10 +58,4 @@ console.debug({url});
 console.debug({rules});
 console.debug({filtered_rules});
 
-setTimeout(do_rename,  500); // .5s delay
-
-// for senscritique.com, we try multiple times
-if (url.search("senscritique.com") != -1) {
-  console.log("senscritique.com detected, we will try to apply rule multiple times");
-  setInterval(do_rename, 5000); //  every 5 second
-}
+setInterval(do_rename, 1000); // every second
