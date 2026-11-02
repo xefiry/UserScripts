@@ -2,13 +2,6 @@
 
 A list of various UserScripts to improve some websites.
 
-## Installation
-
-1. Install [Violentmonkey](https://violentmonkey.github.io/get-it/) add-on.
-2. Install a script from the [List of scripts](#list-of-scripts) by clicking on it.
-
-You can also use [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey](https://addons.mozilla.org/firefox/addon/greasemonkey/), but the scripts are only tested for Violentmonkey, so use them at your own discretion.
-
 ## List of scripts
 
 - [Clean page title](https://github.com/xefiry/UserScripts/raw/refs/heads/master/clean_page_title.user.js)
@@ -21,3 +14,17 @@ You can also use [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey]
 - [Steam - No age check](https://github.com/xefiry/UserScripts/raw/refs/heads/master/steam__no_age_check.user.js)
 - [Twitch - Copy followed channels](https://github.com/xefiry/UserScripts/raw/refs/heads/master/twitch__copy_followed_channel.user.js)
 - [Twitch - Mute and blur ads](https://github.com/xefiry/UserScripts/raw/refs/heads/master/twitch__mute_and_blur_ads.user.js)
+
+## Installation
+
+1. Install [Violentmonkey](https://violentmonkey.github.io/get-it/) add-on.
+2. Install a script from the [List of scripts](#list-of-scripts) by clicking on it.
+
+You can also use [Tampermonkey](https://www.tampermonkey.net/) or [Greasemonkey](https://addons.mozilla.org/firefox/addon/greasemonkey/), but the scripts are only tested for Violentmonkey, so use them at your own discretion.
+
+## Development
+
+This project uses [ESLint](https://eslint.org/). Semicolumn are enforced.
+
+1. Initialize node and install the depencies with `npm install`.
+2. If you are using VS Code, install [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extention.
